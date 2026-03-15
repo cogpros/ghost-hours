@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ghost Hours Export",
+  "description": "Schema for de-identified Ghost Hours share exports (v0.9). Copyright 2026 Raven Systems Inc.",
+  "type": "object",
+  "required": ["dataset", "schema_version", "participant_id", "export_date", "session_count", "entries"],
+  "properties": {
+    "dataset": { "type": "string", "const": "The Ghost Hours Open Dataset 2026" },
+    "schema_version": { "type": "string" },
+    "participant_id": { "type": "string" },
+    "export_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "session_count": { "type": "integer", "minimum": 0 },
+    "retrospection_count": { "type": "integer", "minimum": 0 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["participant_id", "date", "type"],
+        "properties": {
+          "participant_id": { "type": "string" },
+          "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "type": { "type": "string", "enum": ["speed", "unlock", "retrospection"] },
+          "subtype": { "type": "string", "enum": ["restoration", "bypass", "augmentation"] },
+          "human_mins": { "type": "integer", "minimum": 0 },
+          "gh_mins": { "type": "integer", "minimum": 0 },
+          "gh_confidence": { "type": "string", "enum": ["low", "medium", "high", "review"] },
+          "backlog_months": { "type": "number", "minimum": 0 },
+          "backlog_weight": { "type": "number", "minimum": 0 },
+          "fwc": { "type": "integer", "minimum": 1, "maximum": 10 },
+          "fwr": { "type": "integer", "minimum": 1, "maximum": 10 },
+          "session_id": { "type": "string" },
+          "schema_version": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

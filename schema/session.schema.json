@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ghost Hours Session Entry",
+  "description": "Schema for Ghost Hours log entries (v0.9). Copyright 2026 Raven Systems Inc.",
+  "oneOf": [
+    { "$ref": "#/$defs/session" },
+    { "$ref": "#/$defs/retrospection" },
+    { "$ref": "#/$defs/amendment" }
+  ],
+  "$defs": {
+    "session": {
+      "type": "object",
+      "required": ["session_id", "ts", "date", "type", "human_mins", "gh_mins", "desc", "source", "schema_version"],
+      "properties": {
+        "session_id": { "type": "string", "format": "uuid" },
+        "ts": { "type": "string", "format": "date-time" },
+        "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "type": { "type": "string", "enum": ["speed", "unlock"] },
+        "human_mins": { "type": "integer", "minimum": 0 },
+        "gh_mins": { "type": "integer", "minimum": 0 },
+        "desc": { "type": "string", "maxLength": 280 },
+        "source": { "type": "string" },
+        "schema_version": { "type": "string" },
+        "subtype": { "type": "string", "enum": ["restoration", "bypass", "augmentation"] },
+        "gh_confidence": { "type": "string", "enum": ["low", "medium", "high", "review"] },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "backlog_months": { "type": "number", "minimum": 0 },
+        "backlog_weight": { "type": "number", "minimum": 0 },
+        "fwc": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "note": { "type": "string", "maxLength": 1000 },
+        "project": { "type": "string" }
+      },
+      "if": { "properties": { "type": { "const": "speed" } } },
+      "then": { "properties": { "subtype": false } },
+      "additionalProperties": false
+    },
+    "retrospection": {
+      "type": "object",
+      "required": ["ts", "date", "type", "session_id", "fwr", "source", "schema_version"],
+      "properties": {
+        "ts": { "type": "string", "format": "date-time" },
+        "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "type": { "type": "string", "const": "retrospection" },
+        "session_id": { "type": "string", "format": "uuid" },
+        "fwr": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "source": { "type": "string" },
+        "schema_version": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "amendment": {
+      "type": "object",
+      "required": ["ts", "type", "session_id", "changes", "source", "schema_version"],
+      "properties": {
+        "ts": { "type": "string", "format": "date-time" },
+        "type": { "type": "string", "const": "amendment" },
+        "session_id": { "type": "string", "format": "uuid" },
+        "changes": { "type": "object" },
+        "source": { "type": "string" },
+        "schema_version": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
