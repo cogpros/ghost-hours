@@ -10,6 +10,7 @@ version: 0.9.0
 author: Raven Systems Inc.
 license: Apache-2.0
 repository: https://github.com/cogpros/ghost-hours
+user-invocable: true
 commands:
   - log
   - report
@@ -18,6 +19,13 @@ commands:
   - amend
   - share
   - setup
+metadata:
+  openclaw:
+    requires:
+      bins:
+        - python3
+        - bash
+    compatibility: "Python 3.6+, macOS/Linux/Windows. No pip install. No external packages."
 ---
 
 # Ghost Hours -- Agent Instructions
