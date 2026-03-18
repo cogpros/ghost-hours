@@ -82,32 +82,62 @@ The restoration/bypass distinction matters for disability and rehabilitation res
 
 ## Install
 
-Copy the `ghost-hours/` directory into your Claude Code skills folder:
+### Claude Code
 
 ```bash
-# Clone
 git clone https://github.com/cogpros/ghost-hours.git
-
-# Copy to your skills directory
 cp -r ghost-hours ~/.claude/skills/ghost-hours
 ```
 
 Then run `/ghost-hours setup` in Claude Code.
 
+### OpenClaw
+
+```bash
+git clone https://github.com/cogpros/ghost-hours.git
+cp -r ghost-hours ~/.openclaw/extensions/ghost-hours
+```
+
+Or via the compound-engineering plugin converter:
+
+```bash
+bunx @every-env/compound-plugin install cogpros/ghost-hours --to openclaw
+```
+
+### Claude Cowork
+
+Ghost Hours works in Cowork through the same SKILL.md format. Install via Claude Code (skills sync automatically) or copy the skill directory into your Cowork workspace.
+
+### Other Platforms
+
+```bash
+# Cursor, Windsurf, Cline -- copy to skills directory
+cp -r ghost-hours ~/.cursor/skills/ghost-hours
+
+# Codex
+bunx @every-env/compound-plugin install cogpros/ghost-hours --to codex
+
+# Any platform that reads SKILL.md
+cp -r ghost-hours <your-agent-skills-directory>/ghost-hours
+```
+
 ### Requirements
 
-- Claude Code (or any agent that can run bash + read .md skill files)
-- Python 3.6+
+- Python 3.6+ (stdlib only)
+- bash
 - No pip install. No virtual environment. No external packages.
 
-### Other Agents
+### Compatibility
 
 Ghost Hours works on any platform that can run bash and Python:
 
 | Integration | Experience |
 |-------------|-----------|
-| **Claude Code / Cowork** | Full guided flow via SKILL.md |
+| **Claude Code** | Full guided flow via SKILL.md |
+| **Claude Cowork** | Full guided flow (synced from Claude Code) |
+| **OpenClaw** | Full guided flow via SKILL.md |
 | **Cursor, Windsurf, Cline** | Full guided flow (reads skill files) |
+| **Codex, Copilot, Gemini CLI** | Via compound-engineering plugin converter |
 | **Any CLI agent with shell** | Run the scripts directly |
 | **Manual (terminal)** | `bash scripts/log-ghost-hours.sh --type unlock --human 30 --gh 480 --desc "description"` |
 | **Any language** | Write valid JSONL matching the schema |
