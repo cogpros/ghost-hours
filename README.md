@@ -10,7 +10,7 @@ Not time saved. What changed.
 Total sessions:        170
   Speed:                62
   Unlock:              108
-Human Hours invested:  169.5h  (21.2 work-days)
+Hugr Hours invested:   169.5h  (21.2 work-days)
 Ghost Hours conjured:  1,977.8h (247.2 work-days)
 Overall Conjure Rate:  11.7x
 
@@ -74,7 +74,7 @@ The restoration/bypass distinction matters for disability and rehabilitation res
 | Symbol | Name | What it measures |
 |--------|------|-----------------|
 | GH | Ghost Hours | Estimated time a human working alone would need to produce the same output |
-| HH | Human Hours | Time you actually spent |
+| HH | Hugr Hours | Time the hugr (human+AI pair) spent working |
 | CR | Conjure Rate | GH / HH -- your leverage ratio |
 | BW | Backlog Weight | sqrt(BM / 12) -- the psychological cost of tasks that waited months or years |
 | FW-C | Felt Weight of Completion | 1-10. How heavy did finishing this feel? |
@@ -139,7 +139,7 @@ Ghost Hours works on any platform that can run bash and Python:
 | **Cursor, Windsurf, Cline** | Full guided flow (reads skill files) |
 | **Codex, Copilot, Gemini CLI** | Via compound-engineering plugin converter |
 | **Any CLI agent with shell** | Run the scripts directly |
-| **Manual (terminal)** | `bash scripts/log-ghost-hours.sh --type unlock --human 30 --gh 480 --desc "description"` |
+| **Manual (terminal)** | `bash scripts/log-ghost-hours.sh --type unlock --hugr 30 --gh 480 --desc "description"` |
 | **Any language** | Write valid JSONL matching the schema |
 
 ## Commands

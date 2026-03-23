@@ -119,7 +119,7 @@ Record verbatim. Do not summarize or edit. If the user declines, move on.
 Run the logging script:
 ```bash
 bash [skill_dir]/scripts/log-ghost-hours.sh \
-  --type [type] --human [mins] --gh [mins] --desc "[desc]" \
+  --type [type] --hugr [mins] --gh [mins] --desc "[desc]" \
   --source claude-cli \
   [--subtype subtype] [--confidence conf] [--tags "tag1,tag2"] \
   [--backlog months] [--fwc score] [--note "text"] [--project name]
