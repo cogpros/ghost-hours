@@ -67,7 +67,7 @@ For disability and rehabilitation research, the restoration/bypass distinction i
 
 | Symbol | Name | Definition |
 |--------|------|-----------|
-| HH | Human Hours | Actual time the human spent in the session (minutes, displayed as hours) |
+| HH | Hugr Hours | Time the hugr (human+AI pair) spent working. Minutes in data, displayed as hours. |
 | GH | Ghost Hours | Estimated time a human working alone would need to produce the same output |
 | CR | Conjure Rate | GH / HH -- leverage ratio |
 | BM | Backlog Months | How long the task sat undone before AI made it possible |
@@ -135,7 +135,7 @@ One line per entry. One file. Human-readable. Grep-friendly.
 | ts | ISO 8601 | UTC timestamp |
 | date | YYYY-MM-DD | Local date |
 | type | "speed" or "unlock" | Session classification |
-| human_mins | integer | Minutes the human spent |
+| human_mins | integer | Minutes the hugr (human+AI pair) spent working |
 | gh_mins | integer | Estimated minutes this would take solo |
 | desc | string | What was accomplished |
 | source | string | Which agent/tool logged this |
@@ -573,7 +573,7 @@ Span: 31 days | Days active: 31 | Sessions: 170
 Total sessions:        170
   Speed:                62
   Unlock:              108
-Human Hours invested:  169.5h  (21.2 work-days)
+Hugr Hours invested:   169.5h  (21.2 work-days)
 Ghost Hours conjured:  1,977.8h (247.2 work-days)
 Overall Conjure Rate:  11.7x
 
@@ -656,6 +656,12 @@ This is what the README shows. Not what Ghost Hours could do. What it did.
 4. **Export frequency.** User's choice, asked once during setup. "Want a reminder to share your data periodically?" Yes stores a flag and interval. No means silence forever. Zero nagware. One question, permanent setting.
 
 5. **Dataset name.** The Ghost Hours Open Dataset 2026. Year-stamped. Implies future editions. Signals open access.
+
+---
+
+## Changelog
+
+- **2026-03-22:** HH renamed from Human Hours to Hugr Hours. The label "human hours" implied solo time, which is what GH measures. Hugr hours = paired time. Internal field `human_mins` unchanged for backwards compatibility.
 
 ---
 
