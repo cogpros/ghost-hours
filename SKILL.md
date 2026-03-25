@@ -6,7 +6,7 @@ description: |
   unlock (not possible without AI), with subtypes for restoration, bypass,
   and augmentation. Pairs objective metrics with Felt Weight of Completion.
   Research-compatible data format. Cite: Pollock 2026.
-version: 0.9.0
+version: 0.10.0
 author: Raven Systems Inc.
 license: Apache-2.0
 repository: https://github.com/cogpros/ghost-hours
@@ -58,13 +58,15 @@ ONE question per message. Wait for the answer before asking the next. Never batc
 
 ### Flow
 
-**Step 0: Session Summary**
-Before asking anything, give the user 3-5 bullets summarizing what was accomplished in the session. They need to see what they did before they can rate it.
+**Step 1: Session Triage**
+List what was accomplished in the session, grouped by natural boundaries (different type, different project, different cognitive load). Show the groups to the user for confirmation. A session where you fixed a bug (speed, 20 min) and built a new system (unlock, 3 hours) should NOT be one entry.
 
-**Step 1: FW-C**
-Ask: "How heavy was this? (1-10)"
+Ask: "Here's what I see. Does this grouping look right, or should anything be split or combined?"
 
-Reference the anchor chart if the user seems unsure:
+Then run Steps 2-10 for EACH group separately.
+
+**Step 2: FW-C**
+Always show the anchor chart:
 - 1 = Checked a box. Wouldn't remember it happened.
 - 3 = Plumbing. Had to happen. No emotional weight.
 - 5 = Solid work. Moved things forward. Meaningful.
@@ -72,12 +74,17 @@ Reference the anchor chart if the user seems unsure:
 - 8 = Capability milestone. First time doing something real.
 - 10 = New altitude. The trajectory changed.
 
-**Step 2: Type Classification**
-Ask: "Could this have happened without AI?"
-- YES -> type = "speed". Skip to Step 4.
-- NO -> type = "unlock". Continue to Step 3.
+Ask: "How heavy was this? (1-10)"
 
-**Step 3: Subtype Classification (only if event_label is set in config)**
+**Step 3: Agent FW-C (silent)**
+Compute your own FW-C estimate internally. Store it. Do NOT output it. Do NOT hint at it. Do NOT reference it. This value is revealed ONLY during /ghost-hours retro, AFTER the user gives their FW-R. Never before. This is non-negotiable.
+
+**Step 4: Type Classification**
+Ask: "Could this have happened without AI?"
+- YES -> type = "speed". Skip to Step 6.
+- NO -> type = "unlock". Continue to Step 5.
+
+**Step 5: Subtype Classification (only if event_label is set in config)**
 If `event_label` is null or `event_label_asked` is false, skip this step. All unlocks are "augmentation."
 
 If event_label exists:
@@ -89,7 +96,7 @@ Ask: "Is this something you could do before [event_label]?"
 
 Restoration and bypass entries get tagged with the config's `recovery_tag`.
 
-**Step 4: GH Estimate**
+**Step 6: GH Estimate**
 Provide your estimate as a RANGE, not a single number.
 
 Consider: task complexity, tools/knowledge required, the likely solo approach (research, trial-and-error, debugging), and state your reasoning in 1-2 sentences.
@@ -108,27 +115,32 @@ User can confirm or adjust. Entries above 25x are auto-tagged `gh_confidence: "r
 
 Also ask: "How confident is that estimate? (low / medium / high)" -- store as `gh_confidence`.
 
-**Step 5: Backlog**
+**Step 7: Backlog**
 Ask: "How long was this waiting? (months, or 0 if new)"
 
-**Step 6: Note (conditional)**
+**Step 8: Note (conditional)**
 If FW-C >= 5, ask: "Want to say anything about why?"
 Record verbatim. Do not summarize or edit. If the user declines, move on.
 
-**Step 7: Log It**
+**Step 9: SR&ED Check**
+Ask: "Was there technological uncertainty in this session?"
+If yes: capture the uncertainty as a question and the result/advancement. Ask which business line (cogpros/platform/client/internal). If routine application of known solutions, skip.
+
+**Step 10: Log It**
 Run the logging script:
 ```bash
 bash [skill_dir]/scripts/log-ghost-hours.sh \
   --type [type] --hugr [mins] --gh [mins] --desc "[desc]" \
   --source claude-cli \
   [--subtype subtype] [--confidence conf] [--tags "tag1,tag2"] \
-  [--backlog months] [--fwc score] [--note "text"] [--project name]
+  [--backlog months] [--fwc score] [--fwc-eom score] [--note "text"] [--project name] \
+  [--uncertainty "question"] [--result "advancement"] [--sred-line line]
 ```
 
-Display the summary. Done.
+Display the summary. Move to next group or done.
 
-**Step 8: Event Label Check (after 5 sessions)**
-After logging, if `sessions_logged >= 5` AND `event_label_asked` is false:
+**Step 11: Event Label Check (after 5 sessions)**
+After logging all groups, if `sessions_logged >= 5` AND `event_label_asked` is false:
 Say: "You've logged 5 sessions. Ghost Hours can track something deeper -- whether AI is restoring capability you lost to a life event."
 Ask: "Do you have a life event (injury, disability, career change) that affects what you can do?"
 - YES: "How would you describe it in a few words?" Store as event_label. Generate recovery_tag. Set event_label_asked = true.
@@ -161,11 +173,28 @@ If no entries with FW-C >= 5 exist, say: "No high-weight sessions logged yet."
 
 ## /ghost-hours retro
 
+The retrospective felt-weight collection. This is where the blind protocol lives.
+
+### Pacing Rule
+ONE question per message. Same as /ghost-hours log.
+
+### Flow
+
 1. Read the log. Show the last 10 session entries with: date, session_id (first 8 chars), desc, fwc.
 2. User picks one.
-3. Ask: "Looking back, how heavy does that completion feel now? (1-10)"
-4. Log retrospection entry via the writer module.
-5. If the original entry had FW-C, display the delta: "FW-C was [X], FW-R is [Y]. Delta: [X-Y]."
+3. Show the anchor chart (same as Step 2 of /ghost-hours log). Ask: "Looking back, how heavy does this feel now? (1-10)". This is **FW-R**.
+4. Ask: "Why?" Record verbatim.
+5. **NOW reveal the agent's FW-C** from the original session (stored at logging time in Step 3 of /ghost-hours log). Show all three numbers together:
+   - FW-C (user's score at completion): [X]
+   - FW-R (user's score looking back): [Y]
+   - Agent FW-C (agent's blind estimate): [Z]
+   - Delta (FW-C to FW-R): [X-Y]
+   - Delta (user FW-C to agent FW-C): [X-Z]
+6. Give thoughts on the deltas. What shifted? Why might it have shifted?
+7. Log retrospection entry via the writer module.
+
+### CRITICAL: Blind Protocol
+The agent's FW-C is NEVER shown until Step 5. Not during /ghost-hours log. Not at session end. Not in summaries. Not in any other context. The ONLY place the agent's FW-C appears is here, after the user has given both their FW-C (at completion) and their FW-R (looking back). This prevents anchoring and preserves the integrity of the research data.
 
 ## /ghost-hours amend
 
