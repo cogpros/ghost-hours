@@ -225,10 +225,11 @@ def build_session_entry(
     project=None,
 ):
     """Build a validated session entry dict."""
+    now_utc = datetime.now(timezone.utc)
     entry = {
         "session_id": generate_session_id(),
-        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "date": datetime.now().strftime("%Y-%m-%d"),
+        "ts": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "date": now_utc.strftime("%Y-%m-%d"),
         "type": type_,
         "human_mins": int(human_mins),
         "gh_mins": int(gh_mins),
@@ -264,9 +265,10 @@ def build_session_entry(
 
 def build_retrospection_entry(session_id, fwr, source="claude-cli"):
     """Build a validated retrospection entry dict."""
+    now_utc = datetime.now(timezone.utc)
     entry = {
-        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "date": datetime.now().strftime("%Y-%m-%d"),
+        "ts": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "date": now_utc.strftime("%Y-%m-%d"),
         "type": "retrospection",
         "session_id": session_id,
         "fwr": int(fwr),
@@ -279,8 +281,9 @@ def build_retrospection_entry(session_id, fwr, source="claude-cli"):
 
 def build_amendment_entry(session_id, changes, source="claude-cli"):
     """Build a validated amendment entry dict."""
+    now_utc = datetime.now(timezone.utc)
     entry = {
-        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "ts": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "type": "amendment",
         "session_id": session_id,
         "changes": changes,
