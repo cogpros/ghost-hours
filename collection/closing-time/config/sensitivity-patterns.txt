@@ -1,0 +1,31 @@
+# Sensitivity patterns for the closing-time secret scanner.
+# One regex per line (extended-grep syntax). Lines starting with # are comments.
+# Scanner runs case-insensitive against each staged file before commit.
+#
+# POPULATE THIS WITH YOUR OWN PATTERNS. The entries below are generic examples:
+# credentials that should never be committed, plus placeholder identity patterns
+# showing the shape of what to add (your email, your domains, project codenames,
+# health or legal terms — anything that must not leave your machine).
+
+# --- credentials and secrets ---
+api[_-]?key
+BEARER [A-Za-z0-9]{10,}
+sk-[A-Za-z0-9]{20,}
+-----BEGIN (RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----
+password\s*[:=]\s*['"][^'"]+['"]
+secret\s*[:=]\s*['"][^'"]+['"]
+AWS_ACCESS_KEY_ID
+AWS_SECRET
+GITHUB_TOKEN
+
+# --- identity / contacts (EXAMPLES — replace with your own) ---
+your-email@example\.com
+your-domain\.example
+
+# --- project / personal terms (EXAMPLES — replace with your own) ---
+# \bproject-codename\b
+# \bsensitive-topic\b
+
+# --- file patterns that shouldn't travel ---
+\.env\b
+auth-profiles\.json

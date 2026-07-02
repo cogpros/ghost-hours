@@ -46,6 +46,15 @@ Ghost Hours is an agent skill that classifies every AI-assisted session and logs
 
 The taxonomy is the contribution. The tool is the delivery mechanism.
 
+## Collection protocols
+
+The data above didn't come from ad-hoc logging. It came from a session-close
+protocol that runs the Ghost Hours measurement as its final act — every session,
+one question at a time, with the agent's blind score kept silent. The
+[`collection/`](collection/README.md) directory ships that protocol and its two
+variants: an operator-delegated autofill (honesty-tagged) and a multi-agent
+Discord stack close.
+
 ## Why
 
 Productivity tools measure speed. Ghost Hours measures capability delta: the distance between what you are with AI and what you are without it, and whether that distance is recovery, workaround, or new ground.
