@@ -388,9 +388,10 @@ def apply_amendments(entries):
     for e in entries:
         if e.get("type") == "amendment":
             amendments.append(e)
-        elif e.get("session_id") and e.get("type") in SESSION_TYPES:
-            # Only session entries are amendment targets. Retrospections carry
-            # the same session_id and must NOT clobber their session here.
+        elif e.get("session_id") and e.get("type") in ("speed", "unlock"):
+            # Only speed/unlock sessions are amendment targets. Retrospections
+            # AND methodology-notes can carry the same session_id as a session
+            # (e.g. migration artifacts) and must NOT clobber it here.
             sessions[e["session_id"]] = dict(e)
             others.append(e)
         else:
@@ -406,7 +407,7 @@ def apply_amendments(entries):
     result = []
     for e in others:
         sid = e.get("session_id")
-        if sid and sid in sessions and e.get("type") in SESSION_TYPES:
+        if sid and sid in sessions and e.get("type") in ("speed", "unlock"):
             result.append(sessions[sid])
         else:
             result.append(e)

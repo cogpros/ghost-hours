@@ -9,29 +9,29 @@ Not time saved. What changed.
 ```
 === Participant: ANON-001 | 140 days ===
 
-Total sessions:        683
-  Speed:               149
-  Unlock:              534
-Hugr Hours invested:   972h    (121.5 work-days)
-Ghost Hours conjured:  18,092h (2,261.5 work-days)
-Overall Conjure Rate:  18.6x
+Total sessions:        703
+  Speed:               151
+  Unlock:              552
+Hugr Hours invested:   999h    (124.8 work-days)
+Ghost Hours conjured:  18,265h (2,283.1 work-days)
+Overall Conjure Rate:  18.3x
 
-Backlog cleared:       163.7 years (self-reported, 171 sessions)
-Felt Weight avg:       6.5 / 10 (606 scored)
+Backlog cleared:       198.3 years (self-reported, 179 sessions)
+Felt Weight avg:       6.5 / 10 (626 scored)
 
 FW-C Distribution:
    1:  ##  (16)
-   2:  #   (11)
-   3:  ##  (24)
+   2:  #   (13)
+   3:  ##  (25)
    4:  ####### (82)
-   5:  ########## (114)
-   6:  ####  (49)
-   7:  ######### (99)
-   8:  ######  (70)
+   5:  ########## (116)
+   6:  ####  (51)
+   7:  ######### (101)
+   8:  ######  (72)
    9:  ##  (28)
-  10:  ########## (113)
+  10:  ########## (122)
 
-Sources: 622 interactive, 61 scheduled/automated.
+Sources: 642 interactive, 61 scheduled/automated.
 ```
 
 Real data. One person, using Ghost Hours daily for 140 days. No descriptions, no notes, no project names. Just the math and the felt weight.
