@@ -1,5 +1,7 @@
 # Ghost Hours
 
+**v1.0.0** · Apache-2.0 · Pollock 2026, Raven Systems Inc.
+
 Measure what AI actually does for you.
 
 Not time saved. What changed.
@@ -32,53 +34,36 @@ FW-C Distribution:
 Sources: 2 agents, 1 file. 59 automated, 109 manual, 2 autonomous.
 ```
 
-That is real data from one person using Ghost Hours daily for 31 days. No descriptions. No notes. No project names. Just the math and the felt weight.
+Real data. One person, using Ghost Hours daily for 31 days. No descriptions, no notes, no project names. Just the math and the felt weight.
 
----
+## What It Is
 
-## What Ghost Hours Is
+Ghost Hours is an agent skill that classifies every AI-assisted session and logs it.
 
-Ghost Hours is a Claude Code skill that classifies every AI-assisted session and logs it.
+**A personal tool.** You see your leverage ratios, your capability expansion, the backlog you cleared, and a record of what mattered most.
 
-It is two things at once:
+**A measurement framework.** Every installation generates data in the same schema, using the same taxonomy, on the same scales. Opt in and your de-identified data joins The Ghost Hours Open Dataset 2026.
 
-**A personal tool.** You see your leverage ratios, capability expansion, backlog cleared, and a record of what mattered most.
+The taxonomy is the contribution. The tool is the delivery mechanism.
 
-**A measurement framework.** Every installation generates data in the same schema, using the same taxonomy, on the same scales. If you opt in, your de-identified data joins The Ghost Hours Open Dataset 2026.
+## Why
+
+Productivity tools measure speed. Ghost Hours measures capability delta: the distance between what you are with AI and what you are without it, and whether that distance is recovery, workaround, or new ground.
+
+For disability and rehabilitation research, the restoration/bypass distinction is the signal. A restoration that later shows up as a speed session is measurable functional recovery, generated as a byproduct of daily work.
 
 ## The Taxonomy
 
-This is the core contribution. Everything else is interface.
+The core of the framework. Everything else is interface.
 
-### Speed vs. Unlock
+| Type | Subtype | What it means |
+|------|---------|--------------|
+| **Speed** | — | You could have done this without AI. AI made it faster. |
+| **Unlock** | **Restoration** | You had this capability. A life event took it. AI gave it back. |
+| **Unlock** | **Bypass** | You could have learned this before the event, but the event blocked the learning path. AI routes around the gap. |
+| **Unlock** | **Augmentation** | No human could do this alone, event or not. AI grants a new capability. |
 
-| Type | What it means |
-|------|--------------|
-| **Speed** | You could have done this without AI. AI made it faster. |
-| **Unlock** | You could not have done this without AI. Knowledge barrier, complexity barrier, or accumulated inaction blocked it. |
-
-Most productivity tools only measure speed. Ghost Hours measures capability delta.
-
-### Unlock Subtypes
-
-| Subtype | What it means |
-|---------|--------------|
-| **Restoration** | You had this capability. A life event took it. AI gave it back. |
-| **Bypass** | You could have learned this before the event, but the event blocked the learning path. AI routes around the gap. |
-| **Augmentation** | No human could do this alone, event or not. AI grants a new capability. |
-
-The restoration/bypass distinction matters for disability and rehabilitation research. A restoration that later appears as a speed session is measurable functional recovery -- clinical evidence generated as a byproduct of daily work.
-
-## Core Metrics
-
-| Symbol | Name | What it measures |
-|--------|------|-----------------|
-| GH | Ghost Hours | Estimated time a human working alone would need to produce the same output |
-| HH | Hugr Hours | Time the hugr (human+AI pair) spent working |
-| CR | Conjure Rate | GH / HH -- your leverage ratio |
-| BW | Backlog Weight | sqrt(BM / 12) -- the psychological cost of tasks that waited months or years |
-| FW-C | Felt Weight of Completion | 1-10. How heavy did finishing this feel? |
-| FW-R | Felt Weight at Retrospection | Same scale, logged later. How heavy does it feel now? |
+One question splits the types: *could this have happened without AI?* Two more split the subtypes, and they only fire if you have told Ghost Hours about a life event. Until then, every unlock is augmentation.
 
 ## Install
 
@@ -89,37 +74,11 @@ git clone https://github.com/cogpros/ghost-hours.git
 cp -r ghost-hours ~/.claude/skills/ghost-hours
 ```
 
-Then run `/ghost-hours setup` in Claude Code.
+Then run `/ghost-hours setup`.
 
-### OpenClaw
+### Other platforms
 
-```bash
-git clone https://github.com/cogpros/ghost-hours.git
-cp -r ghost-hours ~/.openclaw/extensions/ghost-hours
-```
-
-Or via the compound-engineering plugin converter:
-
-```bash
-bunx @every-env/compound-plugin install cogpros/ghost-hours --to openclaw
-```
-
-### Claude Cowork
-
-Ghost Hours works in Cowork through the same SKILL.md format. Install via Claude Code (skills sync automatically) or copy the skill directory into your Cowork workspace.
-
-### Other Platforms
-
-```bash
-# Cursor, Windsurf, Cline -- copy to skills directory
-cp -r ghost-hours ~/.cursor/skills/ghost-hours
-
-# Codex
-bunx @every-env/compound-plugin install cogpros/ghost-hours --to codex
-
-# Any platform that reads SKILL.md
-cp -r ghost-hours <your-agent-skills-directory>/ghost-hours
-```
+Any platform that reads SKILL.md works the same way: copy the directory into its skills folder (Cursor, Windsurf, Cline, and compatible agents). Any CLI agent with a shell can run the scripts directly. Any language can write valid JSONL matching the schema — the JSONL format is the API.
 
 ### Requirements
 
@@ -127,116 +86,51 @@ cp -r ghost-hours <your-agent-skills-directory>/ghost-hours
 - bash
 - No pip install. No virtual environment. No external packages.
 
-### Compatibility
+## Quickstart
 
-Ghost Hours works on any platform that can run bash and Python:
+```bash
+/ghost-hours setup     # one-time, under a minute
+/ghost-hours log       # at the end of a work session
+/ghost-hours report    # see your numbers
+```
 
-| Integration | Experience |
-|-------------|-----------|
-| **Claude Code** | Full guided flow via SKILL.md |
-| **Claude Cowork** | Full guided flow (synced from Claude Code) |
-| **OpenClaw** | Full guided flow via SKILL.md |
-| **Cursor, Windsurf, Cline** | Full guided flow (reads skill files) |
-| **Codex, Copilot, Gemini CLI** | Via compound-engineering plugin converter |
-| **Any CLI agent with shell** | Run the scripts directly |
-| **Manual (terminal)** | `bash scripts/log-ghost-hours.sh --type unlock --hugr 30 --gh 480 --desc "description"` |
-| **Any language** | Write valid JSONL matching the schema |
+Or log from any terminal, no agent required:
 
-## Commands
+```bash
+bash scripts/log-ghost-hours.sh --type unlock --subtype augmentation \
+  --hugr 30 --gh 480 --desc "Built the thing"
+```
 
-| Command | What it does |
-|---------|-------------|
-| `/ghost-hours setup` | First-time configuration |
-| `/ghost-hours log` | Guided logging flow. The decision tree. |
-| `/ghost-hours report` | Aggregate stats (all time, week, month, custom range) |
-| `/ghost-hours why` | Last 5 sessions where FW-C >= 5, with notes |
-| `/ghost-hours retro` | Log a retrospection score against a past session |
-| `/ghost-hours amend` | Correct a past entry without editing the file |
-| `/ghost-hours share` | Export de-identified data for research |
+The log lives at `~/.ghost-hours/log.jsonl`. Relocate it with `log_path` in `~/.ghost-hours/config.json` or the `GHOST_HOURS_LOG` environment variable.
 
-### The Logging Flow
+### The logging flow
 
-One question at a time. 60 seconds start to finish.
+One question at a time. About 60 seconds per entry.
 
-1. Agent summarizes what you accomplished
+1. The agent triages the session into groups (a bug fix and a new system are two entries, not one)
 2. "How heavy was this?" (FW-C, 1-10)
 3. "Could this have happened without AI?" (speed or unlock)
 4. Subtype classification (after 5 sessions, if applicable)
-5. Agent estimates GH as a range, you pick a spot
+5. The agent estimates GH as a range; you pick a spot
 6. "How long was this waiting?" (backlog)
 7. "Want to say anything about why?" (if FW-C >= 5)
 8. Logged.
 
-## Data Format
+The agent also computes its own FW-C estimate, silently. You never see it during logging. It surfaces only in `/ghost-hours retro`, after you have scored the session twice yourself — a three-number blind comparison of felt weight at completion, felt weight in hindsight, and the agent's read.
 
-JSONL. One file. One line per entry. Human-readable.
+## Metrics
 
-```json
-{
-  "session_id": "a1b2c3d4-...",
-  "ts": "2026-03-15T04:48:29Z",
-  "date": "2026-03-15",
-  "type": "unlock",
-  "subtype": "restoration",
-  "human_mins": 120,
-  "gh_mins": 2400,
-  "gh_confidence": "medium",
-  "desc": "Short description",
-  "fwc": 8,
-  "note": "User's own words",
-  "source": "claude-cli",
-  "schema_version": "0.9"
-}
-```
+| Symbol | Name | What it measures |
+|--------|------|-----------------|
+| HH | Hugr Hours | Time the hugr (the human+AI pair) spent working |
+| GH | Ghost Hours | Estimated time a human working alone would need for the same output |
+| CR | Conjure Rate | GH / HH — your leverage ratio |
+| BM | Backlog Months | How long the task sat undone |
+| BW | Backlog Weight | sqrt(BM / 12) — sub-linear psychological cost of inaction |
+| FW-C | Felt Weight of Completion | 1-10. How heavy did finishing this feel? |
+| FW-R | Felt Weight at Retrospection | Same scale, logged later. How heavy does it feel now? |
 
-Default location: `~/.ghost-hours/log.jsonl`
-
-Process it with Python, jq, R, anything. The JSONL format is the API.
-
-## What the Proof-of-Concept Means
-
-**11.7x Conjure Rate.** For every hour invested, AI produced 11.7 hours of output. Logged session by session. Perceived leverage, not objective measurement -- GH estimates are self-reported.
-
-**108 of 170 sessions were unlocks.** 63% of work done in that month was not possible without AI. Not faster. Not possible.
-
-**109.3 years of backlog cleared.** Self-reported estimates representing perceived delay. The Backlog Weight function dampens outliers. Cumulative weight: 50.08.
-
-**Average FW-C of 7.3.** On a scale where 5 is "solid work" and 10 is "the trajectory changed." 36 sessions rated 10. Early adopter data clusters high -- expected during initial capability expansion. The distribution should spread as calibration improves.
-
-**2 agents, 1 dataset.** Two distinct agents logging to the same JSONL file. The autonomous agent was barely online (2 of 170 sessions). This is the floor, not the ceiling.
-
-## Sharing Your Data
-
-Ghost Hours can export your data for research. The export strips:
-- Descriptions
-- Notes
-- Project names
-- Tags
-- Timestamps (date only retained)
-
-What remains: date, type, subtype, minutes, confidence, backlog, FW-C, FW-R. A random participant ID links your exports. You review the exact payload before anything leaves your machine.
-
-```
-/ghost-hours share
-```
-
-In v0.9, the export saves to a local file. No network transmission.
-
-## Limitations
-
-Read these before using Ghost Hours data in research.
-
-**GH estimates are self-reported.** There is no ground truth. Conjure Rate is perceived leverage, not objective measurement. The agent provides a range, the user picks a spot. Anchoring bias may inflate estimates.
-
-**FW-C is not a validated psychometric instrument.** It is a self-report scale with anchor points derived from one user. Cross-user comparisons of absolute FW-C values are not supported. Analyze trends within participants, not means across participants.
-
-**No peer review.** The Ghost Hours Framework (Pollock 2026) is self-published by Raven Systems Inc. The taxonomy is a proposed classification, not an established standard. External validation is welcomed.
-
-**n=1.** The proof-of-concept is one participant over 31 days. Patterns may not generalize. The dataset becomes meaningful at n>10 with longitudinal coverage.
-
-**Schema version 0.9.** The schema may change before 1.0. A migration script ships from day one.
-
-## The FW-C Anchor Chart
+### The FW-C anchor chart
 
 | Score | Anchor |
 |-------|--------|
@@ -247,18 +141,76 @@ Read these before using Ghost Hours data in research.
 | 8 | Capability milestone. First time doing something real. |
 | 10 | New altitude. The trajectory changed. |
 
-These are examples, not rules. You develop your own calibration over time. Early data clusters high at 10 -- that is expected and normalizes with use.
+Examples, not rules. You develop your own calibration over time. Early data clusters high at 10 — expected, and it normalizes with use.
 
-## Security
+## Commands
 
-- All data stays local. Nothing phones home.
-- `~/.ghost-hours/` directory: `700` permissions.
-- All files: `600` permissions.
+| Command | What it does |
+|---------|-------------|
+| `/ghost-hours setup` | First-time configuration |
+| `/ghost-hours log` | Guided logging flow. The decision tree. |
+| `/ghost-hours report` | Aggregate stats (all time, week, month, custom range) |
+| `/ghost-hours why` | Last 5 sessions where FW-C >= 5, with notes |
+| `/ghost-hours retro` | FW-R scoring plus the three-number blind reveal |
+| `/ghost-hours amend` | Correct a past entry without editing the file |
+| `/ghost-hours share` | Export de-identified data for research |
+
+## Data Format
+
+JSONL. One file. One line per entry. Human-readable. Process it with Python, jq, R, anything.
+
+```json
+{
+  "session_id": "a1b2c3d4-...",
+  "schema_version": "1.0",
+  "ts": "2026-03-15T04:48:29Z",
+  "date": "2026-03-15",
+  "type": "unlock",
+  "subtype": "restoration",
+  "entry_class": "human",
+  "human_mins": 120,
+  "gh_mins": 2400,
+  "gh_confidence": "medium",
+  "desc": "Short description",
+  "fwc": 8,
+  "fwc_source": "operator",
+  "fwc_eom": 7,
+  "note": "User's own words",
+  "source": "claude-cli"
+}
+```
+
+`fwc_eom` is the agent's blind FW-C estimate (read it as `fwc_agent`; the name is retained for dataset compatibility). `entry_class` records who produced the entry — a live human+agent session, an automated scheduler, or a machine-generated artifact — and installs can extend the source map in `ghost_hours_writer.py` for their own agent fleet. Full contracts in `schema/`.
+
+Multiple agents can write to the same log. File locking is handled in Python (`fcntl` on Mac/Linux, `msvcrt` on Windows), and the `source` field distinguishes writers.
+
+## Sharing and Privacy
+
+`/ghost-hours share` exports your data for research. The export strips descriptions, notes, project names, tags, timestamps (date only retained), and session IDs. Retrospection scores are folded into their session rows at export time, so no session ID ever leaves your machine.
+
+What remains: date, type, subtype, entry class, minutes, confidence, backlog, FW-C, agent FW-C, FW-R. A random participant ID links your exports. You review the exact payload before anything leaves your machine.
+
+- All data stays local. Nothing phones home. The export saves to a local file; no network transmission.
+- `~/.ghost-hours/`: `700` permissions, files `600`.
 - The `event_label` in config may contain health information. Disk encryption is your responsibility.
-- File locking via Python (`fcntl` on Mac/Linux, `msvcrt` on Windows).
-- All JSON constructed by Python, never string concatenation.
+- De-identification reduces but does not eliminate re-identification risk. Session frequency and type distributions are quasi-identifiers. Full anonymization is not claimed.
+- Optional tagging (via `--tags`) lets you mark entries for external programs such as tax-credit documentation or research studies; tags are always stripped from exports.
 
-## Citation
+## Limitations
+
+Read these before using Ghost Hours data in research.
+
+**GH estimates are self-reported.** There is no ground truth. Conjure Rate is perceived leverage, not objective measurement. The agent provides a range, the user picks a spot. Anchoring bias may inflate estimates. Ratios above 25x are auto-tagged for review, not rejected.
+
+**FW-C is not a validated psychometric instrument.** It is a self-report scale with anchor points derived from one user. Cross-user comparisons of absolute FW-C values are not supported. Analyze trends within participants, not means across participants.
+
+**No peer review.** The Ghost Hours Framework (Pollock 2026) is self-published by Raven Systems Inc. The taxonomy is a proposed classification, not an established standard. External validation is welcomed.
+
+**n=1.** The proof-of-concept above is one participant over 31 days. Patterns may not generalize. The dataset becomes meaningful at n>10 with longitudinal coverage.
+
+**Backlog months are self-reported.** Perceived delay, not measured duration. The Backlog Weight function dampens outliers.
+
+## Cite
 
 Ghost Hours is a measurement framework developed by Raven Systems Inc.
 

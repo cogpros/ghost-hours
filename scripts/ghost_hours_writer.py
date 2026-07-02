@@ -26,7 +26,21 @@ if sys.platform == "win32":
 else:
     import fcntl
 
-SCHEMA_VERSION = "0.9"
+SCHEMA_VERSION = "1.0"
+# entry_class maps a `source` string to who/what produced the entry:
+#   human     -- a live human+agent working session
+#   scheduler -- an automated/cron agent logging on a schedule
+#   artifact  -- a machine-generated record derived from other work
+# Installs running their own agent fleet can EXTEND this map with their
+# agents' source names. Unknown sources default to "artifact".
+ENTRY_CLASS_MAP = {
+    "claude-cli": "human",
+    "cli": "human",
+    "manual": "human",
+    "cron": "scheduler",
+    "scheduler": "scheduler",
+}
+SESSION_TYPES = ("speed", "unlock", "methodology-note")
 MAX_DESC_LENGTH = 280
 MAX_NOTE_LENGTH = 1000
 MAX_ENTRY_BYTES = 3500
@@ -34,6 +48,28 @@ GH_REVIEW_THRESHOLD = 25
 DEFAULT_LOG_DIR = Path.home() / ".ghost-hours"
 DEFAULT_LOG_PATH = DEFAULT_LOG_DIR / "log.jsonl"
 DEFAULT_CONFIG_PATH = DEFAULT_LOG_DIR / "config.json"
+
+
+def resolve_log_path():
+    """
+    Resolve the active log path, in priority order:
+      1. GHOST_HOURS_LOG environment variable
+      2. `log_path` in ~/.ghost-hours/config.json
+      3. ~/.ghost-hours/log.jsonl (default)
+    """
+    env_path = os.environ.get("GHOST_HOURS_LOG")
+    if env_path:
+        return Path(env_path).expanduser()
+    config_path = DEFAULT_CONFIG_PATH
+    if config_path.exists():
+        try:
+            with open(config_path, "r") as f:
+                cfg = json.load(f)
+            if cfg.get("log_path"):
+                return Path(cfg["log_path"]).expanduser()
+        except (json.JSONDecodeError, OSError):
+            pass
+    return DEFAULT_LOG_PATH
 
 
 class GhostHoursError(Exception):
@@ -105,25 +141,35 @@ def calculate_backlog_weight(backlog_months):
     if not backlog_months or backlog_months <= 0:
         return 0
     years = backlog_months / 12
-    return round(math.sqrt(years), 3)
+    return round(math.sqrt(years), 4)
 
 
 def validate_session_entry(entry):
     """Validate a session entry against schema rules."""
-    required = ["session_id", "ts", "date", "type", "human_mins", "gh_mins",
+    required = ["session_id", "ts", "date", "type", "entry_class", "human_mins", "gh_mins",
                 "desc", "source", "schema_version"]
     for field in required:
         if field not in entry:
             raise ValidationError(f"Missing required field: {field}")
 
-    if entry["type"] not in ("speed", "unlock"):
-        raise ValidationError(f"Invalid type: {entry['type']}. Must be 'speed' or 'unlock'.")
+    if entry["type"] not in SESSION_TYPES:
+        raise ValidationError(f"Invalid type: {entry['type']}. Must be one of {SESSION_TYPES}.")
 
-    if entry.get("subtype") and entry["type"] == "speed":
-        raise ValidationError("subtype must be null/absent when type is 'speed'.")
+    if entry.get("entry_class") not in ("human", "scheduler", "artifact"):
+        raise ValidationError(f"Invalid entry_class: {entry.get('entry_class')}")
+
+    if entry.get("subtype") and entry["type"] != "unlock":
+        raise ValidationError("subtype only valid when type is 'unlock'.")
+
+    # v1.0 gate: a new (gate-enforced) unlock must carry a subtype.
+    if entry["type"] == "unlock" and not entry.get("subtype"):
+        raise ValidationError("unlock entries require a subtype (restoration|bypass|augmentation).")
 
     if entry.get("subtype") and entry["subtype"] not in ("restoration", "bypass", "augmentation"):
         raise ValidationError(f"Invalid subtype: {entry['subtype']}")
+
+    if entry.get("fwc_source") and entry["fwc_source"] not in ("operator", "agent-blind"):
+        raise ValidationError(f"Invalid fwc_source: {entry['fwc_source']}")
 
     if entry.get("fwc") is not None:
         if not (1 <= entry["fwc"] <= 10):
@@ -145,12 +191,14 @@ def validate_session_entry(entry):
 
 def validate_retrospection_entry(entry):
     """Validate a retrospection entry."""
-    required = ["ts", "date", "type", "session_id", "fwr", "source", "schema_version"]
+    required = ["ts", "type", "session_id", "fwr", "fwr_source", "source", "schema_version"]
     for field in required:
         if field not in entry:
             raise ValidationError(f"Missing required field: {field}")
     if entry["type"] != "retrospection":
         raise ValidationError("Retrospection entry must have type 'retrospection'.")
+    if entry["fwr_source"] not in ("field-report", "manual", "migrated"):
+        raise ValidationError(f"Invalid fwr_source: {entry['fwr_source']}")
     if not (1 <= entry["fwr"] <= 10):
         raise ValidationError(f"FW-R must be 1-10, got {entry['fwr']}")
 
@@ -223,19 +271,21 @@ def build_session_entry(
     fwc=None,
     note=None,
     project=None,
+    fwc_eom=None,
+    fwc_source=None,
 ):
-    """Build a validated session entry dict."""
-    now_utc = datetime.now(timezone.utc)
+    """Build a validated session entry dict (v1.0)."""
     entry = {
         "session_id": generate_session_id(),
-        "ts": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "date": now_utc.strftime("%Y-%m-%d"),
+        "schema_version": SCHEMA_VERSION,
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "date": datetime.now().strftime("%Y-%m-%d"),
         "type": type_,
+        "entry_class": ENTRY_CLASS_MAP.get(source, "artifact"),
         "human_mins": int(human_mins),
         "gh_mins": int(gh_mins),
         "desc": desc,
         "source": source,
-        "schema_version": SCHEMA_VERSION,
     }
 
     if subtype:
@@ -249,6 +299,11 @@ def build_session_entry(
         entry["backlog_weight"] = calculate_backlog_weight(float(backlog_months))
     if fwc is not None:
         entry["fwc"] = int(fwc)
+        entry["fwc_source"] = fwc_source or "operator"
+    if fwc_eom is not None:
+        # The agent's blind FW-C estimate. Field name retained for dataset
+        # compatibility with pre-1.0 logs; read it as "fwc_agent".
+        entry["fwc_eom"] = int(fwc_eom)   # blind by protocol; deltas computed at analysis time
     if note:
         entry["note"] = note
     if project:
@@ -263,27 +318,27 @@ def build_session_entry(
     return entry
 
 
-def build_retrospection_entry(session_id, fwr, source="claude-cli"):
-    """Build a validated retrospection entry dict."""
-    now_utc = datetime.now(timezone.utc)
+def build_retrospection_entry(session_id, fwr, source="claude-cli", fwr_source="manual", fwr_note=None):
+    """Build a validated retrospection entry dict (v1.0). Keyed by session_id; never on the session row."""
     entry = {
-        "ts": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "date": now_utc.strftime("%Y-%m-%d"),
         "type": "retrospection",
+        "schema_version": SCHEMA_VERSION,
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "session_id": session_id,
         "fwr": int(fwr),
+        "fwr_source": fwr_source,
         "source": source,
-        "schema_version": SCHEMA_VERSION,
     }
+    if fwr_note:
+        entry["fwr_note"] = fwr_note
     validate_retrospection_entry(entry)
     return entry
 
 
 def build_amendment_entry(session_id, changes, source="claude-cli"):
     """Build a validated amendment entry dict."""
-    now_utc = datetime.now(timezone.utc)
     entry = {
-        "ts": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "type": "amendment",
         "session_id": session_id,
         "changes": changes,
@@ -296,7 +351,7 @@ def build_amendment_entry(session_id, changes, source="claude-cli"):
 
 def log_entry(entry, log_path=None):
     """Validate, serialize, and append an entry to the log file."""
-    log_path = Path(log_path or DEFAULT_LOG_PATH)
+    log_path = Path(log_path) if log_path else resolve_log_path()
     ensure_directory(log_path.parent)
     check_file_permissions(log_path)
 
@@ -307,7 +362,7 @@ def log_entry(entry, log_path=None):
 
 def read_log(log_path=None):
     """Read all valid entries from the log file. Skips malformed lines with warning."""
-    log_path = Path(log_path or DEFAULT_LOG_PATH)
+    log_path = Path(log_path) if log_path else resolve_log_path()
     if not log_path.exists():
         return []
 
@@ -333,7 +388,9 @@ def apply_amendments(entries):
     for e in entries:
         if e.get("type") == "amendment":
             amendments.append(e)
-        elif e.get("session_id"):
+        elif e.get("session_id") and e.get("type") in SESSION_TYPES:
+            # Only session entries are amendment targets. Retrospections carry
+            # the same session_id and must NOT clobber their session here.
             sessions[e["session_id"]] = dict(e)
             others.append(e)
         else:
@@ -349,7 +406,7 @@ def apply_amendments(entries):
     result = []
     for e in others:
         sid = e.get("session_id")
-        if sid and sid in sessions:
+        if sid and sid in sessions and e.get("type") in SESSION_TYPES:
             result.append(sessions[sid])
         else:
             result.append(e)
@@ -395,6 +452,6 @@ def increment_session_count(config_path=None):
 if __name__ == "__main__":
     print("ghost_hours_writer.py -- Ghost Hours core write engine")
     print(f"Schema version: {SCHEMA_VERSION}")
-    print(f"Default log: {DEFAULT_LOG_PATH}")
+    print(f"Log path: {resolve_log_path()}")
     print(f"Platform: {sys.platform}")
     print(f"Locking: {'msvcrt' if sys.platform == 'win32' else 'fcntl'}")

@@ -1,9 +1,9 @@
 # Ghost Hours -- Open Source Skill Specification
 
-**Version:** 0.9 (public beta)
+**Version:** 1.0.0
 **Author:** D. Pollock, Raven Systems Inc.
-**Date:** 2026-03-15
-**Status:** PRISM-reviewed (2 rounds, 3 reviewers). Ready to build.
+**Date:** 2026-07-01
+**Status:** Stable. Schema 1.0; migration contract honored from here forward.
 
 ---
 
@@ -101,29 +101,32 @@ These anchors are examples, not rules. Users develop their own calibration over 
 
 One line per entry. One file. Human-readable. Grep-friendly.
 
-**Default location:** `~/.ghost-hours/log.jsonl`
+**Default location:** `~/.ghost-hours/log.jsonl`. Override with `log_path` in `~/.ghost-hours/config.json` or the `GHOST_HOURS_LOG` environment variable (env var wins).
 
 ### Session Entry
 
 ```json
 {
   "session_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "schema_version": "1.0",
   "ts": "2026-03-15T04:48:29Z",
   "date": "2026-03-15",
   "type": "unlock",
   "subtype": "restoration",
+  "entry_class": "human",
   "human_mins": 120,
   "gh_mins": 2400,
   "gh_confidence": "medium",
   "desc": "Short description of what was accomplished",
   "tags": ["tbi-recovery", "code"],
   "backlog_months": 24.0,
-  "backlog_weight": 1.414,
+  "backlog_weight": 1.4142,
   "fwc": 8,
+  "fwc_source": "operator",
+  "fwc_eom": 7,
   "note": "Verbatim reflection in the user's own words",
   "project": "optional-project-name",
-  "source": "claude-cli",
-  "schema_version": "0.9"
+  "source": "claude-cli"
 }
 ```
 
@@ -134,23 +137,26 @@ One line per entry. One file. Human-readable. Grep-friendly.
 | session_id | UUID v4 | Unique identifier for this session. Generated at log time. Required for retrospection linking. |
 | ts | ISO 8601 | UTC timestamp |
 | date | YYYY-MM-DD | Local date |
-| type | "speed" or "unlock" | Session classification |
+| type | "speed", "unlock", or "methodology-note" | Session classification |
+| entry_class | "human", "scheduler", or "artifact" | Who produced the entry: a live human+agent session, an automated scheduler agent, or a machine-generated artifact. Derived from `source` via a map that installs can extend. |
 | human_mins | integer | Minutes the hugr (human+AI pair) spent working |
 | gh_mins | integer | Estimated minutes this would take solo |
 | desc | string | What was accomplished |
 | source | string | Which agent/tool logged this |
-| schema_version | string | "0.9" -- schema may change before 1.0. Migration script ships from day one. |
+| schema_version | string | "1.0" -- stable. Migration script covers pre-1.0 logs. |
 
 ### Optional Fields
 
 | Field | Type | Description |
 |-------|------|------------|
-| subtype | "restoration", "bypass", "augmentation" | Unlock classification. MUST be null/absent when type is "speed". JSON Schema encodes this as a conditional. |
+| subtype | "restoration", "bypass", "augmentation" | Unlock classification. REQUIRED when type is "unlock" (the v1.0 writer gate rejects unlocks without one); MUST be absent otherwise. JSON Schema encodes this as a conditional. |
 | gh_confidence | "low", "medium", "high" | How confident is the GH estimate? |
 | tags | string[] | User-defined tags |
 | backlog_months | float | How long this waited |
 | backlog_weight | float | Calculated: sqrt(BM/12) |
 | fwc | integer 1-10 | Felt Weight of Completion |
+| fwc_source | "operator", "agent-blind" | Who supplied the fwc score: the user, or the agent estimating blind on the user's behalf |
+| fwc_eom | integer 1-10 | The agent's blind FW-C estimate, computed silently at logging time and revealed only during retro. Field name retained for dataset compatibility with pre-1.0 logs; read it as `fwc_agent`. |
 | note | string | Verbatim reflection |
 | project | string | Project name |
 
@@ -159,16 +165,17 @@ One line per entry. One file. Human-readable. Grep-friendly.
 ```json
 {
   "ts": "2026-03-22T10:00:00Z",
-  "date": "2026-03-22",
   "type": "retrospection",
   "session_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "fwr": 7,
+  "fwr_source": "manual",
+  "fwr_note": "Verbatim reflection at retrospection time",
   "source": "claude-cli",
-  "schema_version": "0.9"
+  "schema_version": "1.0"
 }
 ```
 
-Retrospection entries reference `session_id`, not date. This eliminates ambiguity on multi-session days.
+Retrospection entries reference `session_id`, not date. This eliminates ambiguity on multi-session days. `fwr_source` records how the score was collected (`field-report`, `manual`, or `migrated`). In the local log the session_id link is safe; exports fold FW-R into the session row and drop the session_id entirely (see Share).
 
 ### Schema Version
 
@@ -196,7 +203,7 @@ All write operations MUST verify the append succeeded (check exit code / excepti
 
 ### Log Integrity
 
-v0.9 does not include checksums or integrity verification on the log file. The report and share commands validate each line as parseable JSON and skip malformed entries with a warning rather than failing silently. A per-entry hash chain is considered for v1.0 but excluded from v0.9 for simplicity.
+v1.0 does not include checksums or integrity verification on the log file. The report and share commands validate each line as parseable JSON and skip malformed entries with a warning rather than failing silently. A per-entry hash chain is considered for a future version but excluded for simplicity.
 
 ### File Permissions
 
@@ -258,7 +265,7 @@ Correct a past entry without hand-editing the log file.
      "ts": "[now]",
      "changes": { "field": "new_value", ... },
      "source": "claude-cli",
-     "schema_version": "0.9"
+     "schema_version": "1.0"
    }
 6. Original entry is never mutated. Audit trail preserved.
    Report/share commands apply amendments on read.
@@ -315,15 +322,17 @@ Opt-in research data export.
 **Flow:**
 1. Explains what will be shared (Tier 1: de-identified numbers only)
 2. User confirms
-3. Generates export file at `~/.ghost-hours/share/YYYY-MM-DD-export.json` with:
+3. Generates export file at `<log-dir>/share/YYYY-MM-DD-export.json` with:
    - Random participant ID (generated once, stored in config)
-   - All session entries stripped of: desc, note, project, tags, ts
-   - Retains: date, type, subtype, human_mins, gh_mins, gh_confidence, backlog_months, backlog_weight, fwc, fwr, schema_version
+   - All session entries stripped of: desc, note, fwr_note, project, tags, ts, session_id
+   - Retains: date, type, entry_class, subtype, human_mins, gh_mins, gh_confidence, backlog_months, backlog_weight, fwc, fwc_source, fwc_eom, fwr, fwr_source, schema_version
+   - Retrospection scores are folded into their session rows by session_id BEFORE the id is dropped. Retrospection entries never export with a session_id -- the id is a re-identification vector. Orphan retrospections (whose session is not in the log) export as standalone rows with date and score only.
+   - Top-level counters `x_suppressed_tags` and `x_suppressed_projects` record how many entries had those fields stripped, so analysts know the shape of what was withheld.
 4. Displays the export file contents for review before any transmission
-5. In v1.0, no network transmission occurs. When the endpoint ships (v1.1), the share command will POST this file to ghosthours.ca/api/share with a 30-second timeout, single retry, and local confirmation of success/failure. Maximum payload: 1MB (~3,500 de-identified entries).
+5. No network transmission occurs in v1.0. When the endpoint ships (v1.1), the share command will POST this file to ghosthours.ca/api/share with a 30-second timeout, single retry, and local confirmation of success/failure. Maximum payload: 1MB (~3,500 de-identified entries).
 
 **Privacy guarantees:**
-- No descriptions. No notes. No project names. No file paths. No timestamps (date only).
+- No descriptions. No notes. No project names. No file paths. No timestamps (date only). No session IDs.
 - Participant ID is random, not derived from any personal info.
 - User reviews the exact payload before it leaves the machine.
 - Share is always manual. Never automatic. Never silent.
@@ -335,7 +344,7 @@ First-time configuration. Lightweight on-ramp. The heavy question comes later.
 
 ```
 1. "Ghost Hours measures what AI does for you -- both speed and capability expansion."
-2. Sets log file location (default: ~/.ghost-hours/log.jsonl)
+2. Sets log file location (default: ~/.ghost-hours/log.jsonl; GHOST_HOURS_LOG env var overrides)
 3. Generates participant ID (UUID, stored locally)
 4. "Want a reminder to share your de-identified data periodically?"
    --> yes: "How often? (weekly / monthly / quarterly)" (stored as share_reminder)
@@ -373,7 +382,7 @@ Config stored in `~/.ghost-hours/config.json`:
   "event_label": null,
   "recovery_tag": null,
   "event_label_asked": false,
-  "schema_version": "0.9",
+  "schema_version": "1.0",
   "setup_date": "2026-03-15"
 }
 ```
@@ -382,7 +391,7 @@ The `sessions_logged` counter is advisory. In multi-agent scenarios, the count m
 
 ### Config Security
 
-The `config.json` file may contain the user's `event_label`, which constitutes self-disclosed health information. File permissions (600) provide user-level protection. Disk-level protection (full-disk encryption) is the user's responsibility. Ghost Hours does not implement application-level encryption in v0.9 -- the tradeoff is simplicity and inspectability over encryption at rest.
+The `config.json` file may contain the user's `event_label`, which constitutes self-disclosed health information. File permissions (600) provide user-level protection. Disk-level protection (full-disk encryption) is the user's responsibility. Ghost Hours does not implement application-level encryption in v1.0 -- the tradeoff is simplicity and inspectability over encryption at rest.
 
 ---
 
@@ -390,16 +399,22 @@ The `config.json` file may contain the user's `event_label`, which constitutes s
 
 ```
 ghost-hours/
-  SKILL.md              # Skill definition (Claude Code reads this)
+  SKILL.md              # Skill definition (the agent reads this)
   README.md             # For humans. Teaches the taxonomy. Explains the research.
+  SPEC.md               # This document.
   LICENSE               # Apache 2.0, Raven Systems Inc.
   scripts/
-    log-ghost-hours.sh  # Core logging script (JSONL writer)
+    ghost_hours_writer.py # Core write engine (JSON construction, locking, validation)
+    log-ghost-hours.sh  # CLI logging wrapper
+    advance.sh          # Guided-flow state machine
     ghost-hours-stats.sh # Report generator
     ghost-hours-share.sh # Export/share script
+    migrate-legacy-log.py # Pre-1.0 log migration
   schema/
     session.schema.json  # JSON Schema for validation
     export.schema.json   # JSON Schema for share exports
+  references/
+    output-scorecard.md  # Post-run adherence scorecard
 ```
 
 ### SKILL.md Structure
@@ -408,7 +423,7 @@ ghost-hours/
 ---
 name: ghost-hours
 description: Measure what AI actually does for you. Productivity and capability tracking built as a research framework.
-version: 0.9.0
+version: 1.0.0
 author: Raven Systems Inc.
 commands:
   - log
@@ -427,7 +442,7 @@ run the guided flow correctly.]
 
 ---
 
-## What Ships in v0.9 (public beta)
+## What Shipped in v0.9 (public beta)
 
 - [ ] SKILL.md with full decision tree, taxonomy, estimation logic, and error handling
 - [ ] README.md that teaches the framework, the taxonomy, and the limitations
@@ -456,16 +471,29 @@ run the guided flow correctly.]
 - [ ] Tag sanitization (lowercase, hyphens, strip non-alphanumeric, append -recovery, max 50 chars, Python)
 - [ ] Multi-agent documentation (Cowork, other CLI agents, manual logging)
 - [ ] Configurable recovery tags (auto-generated from event_label after session 5)
-- [ ] Migration script for Dustin's existing log.jsonl (add session_id, schema_version, timestamped backup with entry-count validation)
+- [ ] Migration script for pre-existing legacy logs (add session_id, schema_version, timestamped backup with entry-count validation)
 - [ ] Conditional schema validation (subtype only valid when type=unlock)
 
 ## What Ships in v1.0
 
 - Schema version promoted to 1.0 (schema stable, migration contract honored)
-- Live share endpoint at ghosthours.ca/api/share (HTTPS required, participant_id auth, rate limiting, full spec in v1.0 doc)
+- `entry_class` on every session entry (human / scheduler / artifact), derived from an extensible source map
+- Writer gate: unlock entries require a subtype (restoration / bypass / augmentation)
+- `fwc_source` provenance on every FW-C score (operator vs. agent-blind)
+- `fwc_eom` -- the agent's blind FW-C estimate, logged silently, revealed only at retro
+- Retro blind protocol: three-number reveal (FW-C, FW-R, agent FW-C) with both deltas
+- Session triage: multi-thread sessions split into multiple entries before logging
+- `advance.sh` state machine for the guided flow (the agent calls it, never emulates it)
+- Retrospection sidecar entries with `fwr_source` and verbatim `fwr_note`
+- Export privacy fix: retrospection scores folded into session rows; session_id never exported
+- Export suppression counters (`x_suppressed_tags`, `x_suppressed_projects`)
+- Configurable log location (`log_path` in config, `GHOST_HOURS_LOG` env var)
+
+## Deferred Beyond v1.0
+
+- Live share endpoint at ghosthours.ca/api/share (HTTPS required, participant_id auth, rate limiting)
 - Dashboard (local HTML)
 - `/ghost-hours delta` -- entries with both FW-C and FW-R, sorted by delta magnitude
-- Capability Delta integration (weekly growth proof from GH data)
 - Log rotation strategy for high-volume installations (>50K entries)
 - Periodic recalibration nudge (every 50 sessions or quarterly) -- pending data on drift
 - Per-entry hash chain for log integrity
@@ -614,9 +642,9 @@ FW-C = 10 (new altitude):  36 sessions
 Sessions with verbatim notes: 69
 
 --- SOURCES ---
-  claude-cli:      109
-  openclaw-cron:    59
-  openclaw-odin:     2
+  claude-cli:       109
+  cron-agent:        59
+  autonomous-agent:   2
 
 --- MULTI-AGENT ---
 3 distinct agents logging to the same file.
@@ -635,7 +663,7 @@ Sessions with verbatim notes: 69
 
 **69 verbatim notes.** Qualitative data captured at the moment of completion. Not visible in this report (privacy). Available to the participant. Available to research if they opt into Tier 2 sharing.
 
-**3 agents, 1 dataset.** Multi-agent logging proven in production. Claude CLI, Odin (autonomous agent), and cron-based automated logging all writing to the same JSONL file with distinct source tags. The schema handles it. The data is clean. And the autonomous agent (Odin) was barely online -- 2 of 170 sessions. This data is almost entirely one human working with one agent. The multi-agent layer is the floor, not the ceiling.
+**3 agents, 1 dataset.** Multi-agent logging proven in production. A CLI agent, an autonomous agent, and cron-based automated logging all writing to the same JSONL file with distinct source tags. The schema handles it. The data is clean. And the autonomous agent was barely online -- 2 of 170 sessions. This data is almost entirely one human working with one agent. The multi-agent layer is the floor, not the ceiling.
 
 ### What this proves
 
@@ -661,6 +689,7 @@ This is what the README shows. Not what Ghost Hours could do. What it did.
 
 ## Changelog
 
+- **2026-07-01:** v1.0.0. Schema promoted to 1.0: entry_class, fwc_source, fwc_eom, fwr_source, fwr_note, unlock-requires-subtype gate. Session triage and the retro three-number blind reveal added to the flow. Export folds FW-R into session rows and drops session_id (re-identification fix); suppression counters added. Log path configurable via config or GHOST_HOURS_LOG.
 - **2026-03-22:** HH renamed from Human Hours to Hugr Hours. The label "human hours" implied solo time, which is what GH measures. Hugr hours = paired time. Internal field `human_mins` unchanged for backwards compatibility.
 
 ---

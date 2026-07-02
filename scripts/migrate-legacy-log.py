@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-migrate-legacy-log.py -- Migrate existing log.jsonl to Ghost Hours v0.9 schema.
+migrate-legacy-log.py -- Migrate a pre-1.0 log.jsonl to the Ghost Hours v1.0 schema.
 
-Adds session_id and schema_version to existing entries.
+Adds session_id, schema_version, and entry_class to existing entries.
 Creates timestamped backup. Validates entry count after migration.
 
 Usage:
     python3 migrate-legacy-log.py [--input PATH] [--dry-run]
 
-Default input: ~/.openclaw/leverage/log.jsonl
+Default input: the active log (GHOST_HOURS_LOG env var, config log_path, or ~/.ghost-hours/log.jsonl)
 Output: same file (in-place with backup)
 
 Copyright 2026 Raven Systems Inc. Licensed under Apache 2.0.
@@ -22,7 +22,7 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
-SCHEMA_VERSION = "0.9"
+SCHEMA_VERSION = "1.0"
 
 
 def migrate_entry(entry):
@@ -36,6 +36,12 @@ def migrate_entry(entry):
     # Add schema_version if missing
     if "schema_version" not in migrated:
         migrated["schema_version"] = SCHEMA_VERSION
+
+    # Add entry_class if missing (session entries only)
+    if migrated.get("type") in ("speed", "unlock", "methodology-note") and "entry_class" not in migrated:
+        class_map = {"claude-cli": "human", "cli": "human", "manual": "human",
+                     "cron": "scheduler", "scheduler": "scheduler"}
+        migrated["entry_class"] = class_map.get(migrated.get("source", ""), "artifact")
 
     # Recompute backlog_weight if backlog_months exists (derived field)
     if migrated.get("backlog_months"):
@@ -59,7 +65,12 @@ def main():
             continue
 
     if input_path is None:
-        input_path = Path.home() / ".openclaw" / "leverage" / "log.jsonl"
+        import importlib.util
+        writer_path = Path(__file__).parent / "ghost_hours_writer.py"
+        spec = importlib.util.spec_from_file_location("ghost_hours_writer", writer_path)
+        w = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(w)
+        input_path = w.resolve_log_path()
 
     if not input_path.exists():
         print(f"Error: {input_path} not found.")

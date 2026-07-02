@@ -19,7 +19,7 @@ if ! command -v python3 &>/dev/null; then
 fi
 
 TYPE="" HUMAN="" GH="" DESC="" SOURCE="claude-cli"
-SUBTYPE="" GH_CONF="" TAGS="" BACKLOG="" FWC="" NOTE="" PROJECT=""
+SUBTYPE="" GH_CONF="" TAGS="" BACKLOG="" FWC="" FWC_EOM="" FWC_SOURCE="" NOTE="" PROJECT=""
 AMEND="" AMEND_FIELDS=""
 
 while [[ $# -gt 0 ]]; do
@@ -34,6 +34,8 @@ while [[ $# -gt 0 ]]; do
     --tags)     TAGS="$2";     shift 2 ;;
     --backlog)  BACKLOG="$2";  shift 2 ;;
     --fwc)      FWC="$2";      shift 2 ;;
+    --fwc-eom|--fwc-agent) FWC_EOM="$2"; shift 2 ;;
+    --fwc-source) FWC_SOURCE="$2"; shift 2 ;;
     --note)     NOTE="$2";     shift 2 ;;
     --project)  PROJECT="$2";  shift 2 ;;
     --amend)    AMEND="$2";    shift 2 ;;
@@ -140,6 +142,8 @@ if [[ -z "$TYPE" || -z "$HUMAN" || -z "$GH" || -z "$DESC" ]]; then
   echo "  --tags      comma-separated tags"
   echo "  --backlog   months this task waited"
   echo "  --fwc       felt weight of completion (1-10)"
+  echo "  --fwc-eom   agent's blind FW-C estimate (1-10; alias --fwc-agent)"
+  echo "  --fwc-source operator | agent-blind (default: operator)"
   echo "  --note      verbatim reflection (max 1000 chars)"
   echo "  --project   project name"
   echo "  --source    agent source (default: claude-cli)"
@@ -151,7 +155,7 @@ if [[ -z "$TYPE" || -z "$HUMAN" || -z "$GH" || -z "$DESC" ]]; then
   exit 1
 fi
 
-python3 - "$TYPE" "$HUMAN" "$GH" "$DESC" "$SOURCE" "$SUBTYPE" "$GH_CONF" "$TAGS" "$BACKLOG" "$FWC" "$NOTE" "$PROJECT" "$WRITER" << 'PYEOF'
+python3 - "$TYPE" "$HUMAN" "$GH" "$DESC" "$SOURCE" "$SUBTYPE" "$GH_CONF" "$TAGS" "$BACKLOG" "$FWC" "$NOTE" "$PROJECT" "$FWC_EOM" "$FWC_SOURCE" "$WRITER" << 'PYEOF'
 import sys
 import os
 import importlib.util
@@ -159,7 +163,8 @@ import importlib.util
 args = sys.argv[1:]
 type_, human, gh, desc, source = args[0], args[1], args[2], args[3], args[4]
 subtype, gh_conf, tags_str, backlog = args[5], args[6], args[7], args[8]
-fwc, note, project, writer_path = args[9], args[10], args[11], args[12]
+fwc, note, project = args[9], args[10], args[11]
+fwc_eom, fwc_source, writer_path = args[12], args[13], args[14]
 
 # Import the writer module
 spec = importlib.util.spec_from_file_location("ghost_hours_writer", writer_path)
@@ -183,6 +188,8 @@ entry = w.build_session_entry(
     fwc=int(fwc) if fwc else None,
     note=note or None,
     project=project or None,
+    fwc_eom=int(fwc_eom) if fwc_eom else None,
+    fwc_source=fwc_source or None,
 )
 
 # Write it
