@@ -7,34 +7,34 @@ Measure what AI actually does for you.
 Not time saved. What changed.
 
 ```
-=== Participant: ANON-001 | 31 days ===
+=== Participant: ANON-001 | 140 days ===
 
-Total sessions:        170
-  Speed:                62
-  Unlock:              108
-Hugr Hours invested:   169.5h  (21.2 work-days)
-Ghost Hours conjured:  1,977.8h (247.2 work-days)
-Overall Conjure Rate:  11.7x
+Total sessions:        683
+  Speed:               149
+  Unlock:              534
+Hugr Hours invested:   972h    (121.5 work-days)
+Ghost Hours conjured:  18,092h (2,261.5 work-days)
+Overall Conjure Rate:  18.6x
 
-Backlog cleared:       109.3 years (self-reported)
-Felt Weight avg:       7.3 / 10
+Backlog cleared:       163.7 years (self-reported, 171 sessions)
+Felt Weight avg:       6.5 / 10 (606 scored)
 
 FW-C Distribution:
-   1:  # (1)
-   2:  ### (3)
-   3:  ##### (5)
-   4:  ########## (10)
-   5:  ######### (9)
-   6:  ###### (6)
-   7:  ############# (13)
-   8:  ######## (8)
-   9:  ### (3)
-  10:  #################################### (36)
+   1:  ##  (16)
+   2:  #   (11)
+   3:  ##  (24)
+   4:  ####### (82)
+   5:  ########## (114)
+   6:  ####  (49)
+   7:  ######### (99)
+   8:  ######  (70)
+   9:  ##  (28)
+  10:  ########## (113)
 
-Sources: 2 agents, 1 file. 59 automated, 109 manual, 2 autonomous.
+Sources: 622 interactive, 61 scheduled/automated.
 ```
 
-Real data. One person, using Ghost Hours daily for 31 days. No descriptions, no notes, no project names. Just the math and the felt weight.
+Real data. One person, using Ghost Hours daily for 140 days. No descriptions, no notes, no project names. Just the math and the felt weight.
 
 ## What It Is
 
@@ -206,7 +206,7 @@ Read these before using Ghost Hours data in research.
 
 **No peer review.** The Ghost Hours Framework (Pollock 2026) is self-published by Raven Systems Inc. The taxonomy is a proposed classification, not an established standard. External validation is welcomed.
 
-**n=1.** The proof-of-concept above is one participant over 31 days. Patterns may not generalize. The dataset becomes meaningful at n>10 with longitudinal coverage.
+**n=1.** The proof-of-concept above is one participant over 140 days. Patterns may not generalize. The dataset becomes meaningful at n>10 with longitudinal coverage.
 
 **Backlog months are self-reported.** Perceived delay, not measured duration. The Backlog Weight function dampens outliers.
 
