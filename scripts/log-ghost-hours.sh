@@ -2,7 +2,7 @@
 # log-ghost-hours.sh -- Log a Ghost Hours session entry
 #
 # Usage:
-#   log-ghost-hours.sh --type unlock --hugr 30 --gh 480 --desc "Built the thing"
+#   log-ghost-hours.sh --type unlock --subtype bypass --hugr 30 --gh 480 --desc "Built the thing"
 #   log-ghost-hours.sh --type speed --hugr 60 --gh 120 --desc "Wrote social posts"
 #
 # All JSON construction and file locking is handled by Python.
