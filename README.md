@@ -227,6 +227,10 @@ If you use Ghost Hours or its data in published work, please cite:
 
 > Pollock, D. (2026). The Ghost Hours Framework: A Mathematical Model for Measuring AI-Assisted Human Output and the Experience of Capability Expansion. Raven Systems Inc.
 
+## Related tools
+
+- [checkpoint](https://github.com/cogpros/checkpoint). Session-state dashboard from the same cognitive prosthetics lineage. Checkpoint shows where a session stands, Ghost Hours measures what the sessions add up to.
+
 ## License
 
 Apache 2.0. Copyright 2026 Raven Systems Inc.
