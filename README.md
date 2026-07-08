@@ -7,34 +7,34 @@ Measure what AI actually does for you.
 Not time saved. What changed.
 
 ```
-=== Participant: ANON-001 | 140 days ===
+=== Participant: ANON-001 | 145 days ===
 
-Total sessions:        703
-  Speed:               151
-  Unlock:              552
-Hugr Hours invested:   999h    (124.8 work-days)
-Ghost Hours conjured:  18,265h (2,283.1 work-days)
-Overall Conjure Rate:  18.3x
+Total sessions:        737
+  Speed:               153
+  Unlock:              584
+Hugr Hours invested:   1,071h  (133.9 work-days)
+Ghost Hours conjured:  19,331h (2,416.4 work-days)
+Overall Conjure Rate:  18.0x
 
-Backlog cleared:       198.3 years (self-reported, 179 sessions)
-Felt Weight avg:       6.5 / 10 (626 scored)
+Backlog cleared:       201.1 years (self-reported, 203 sessions)
+Felt Weight avg:       6.5 / 10 (660 scored)
 
 FW-C Distribution:
-   1:  ##  (16)
-   2:  #   (13)
+   1:  #  (16)
+   2:  #  (13)
    3:  ##  (25)
-   4:  ####### (82)
-   5:  ########## (116)
-   6:  ####  (51)
-   7:  ######### (101)
-   8:  ######  (72)
-   9:  ##  (28)
-  10:  ########## (122)
+   4:  #######  (82)
+   5:  ##########  (120)
+   6:  #####  (55)
+   7:  ##########  (120)
+   8:  ######  (77)
+   9:  ##  (30)
+  10:  ##########  (122)
 
-Sources: 642 interactive, 61 scheduled/automated.
+Sources: 676 interactive, 61 scheduled/automated.
 ```
 
-Real data. One person, using Ghost Hours daily for 140 days. No descriptions, no notes, no project names. Just the math and the felt weight.
+Real data. One person, using Ghost Hours daily for 145 days. No descriptions, no notes, no project names. Just the math and the felt weight.
 
 ## What It Is
 
@@ -42,7 +42,7 @@ Ghost Hours is an agent skill that classifies every AI-assisted session and logs
 
 **A personal tool.** You see your leverage ratios, your capability expansion, the backlog you cleared, and a record of what mattered most.
 
-**A measurement framework.** Every installation generates data in the same schema, using the same taxonomy, on the same scales. Opt in and your de-identified data joins The Ghost Hours Open Dataset 2026.
+**A measurement framework.** Every installation generates data in the same schema, using the same taxonomy, on the same scales. Opt in and your de-identified data joins the Ghost Hours Open Dataset, shipped in this repo at [`dataset/`](dataset/).
 
 The taxonomy is the contribution. The tool is the delivery mechanism.
 
@@ -193,6 +193,16 @@ JSONL. One file. One line per entry. Human-readable. Process it with Python, jq,
 
 Multiple agents can write to the same log. File locking is handled in Python (`fcntl` on Mac/Linux, `msvcrt` on Windows), and the `source` field distinguishes writers.
 
+## Dataset
+
+The de-identified export ships in this repo at [`dataset/ghost-hours-export-2026-07-07.json`](dataset/ghost-hours-export-2026-07-07.json): 760 records (737 sessions + 23 methodology notes) from ANON-001, as of 2026-07-07.
+
+Fields included: `date`, `type`, `entry_class`, `subtype`, `human_mins`, `gh_mins`, `gh_confidence`, `backlog_months`, `backlog_weight`, `fwc`, `fwc_source`, `fwc_eom`, `fwr`, `fwr_source`.
+
+Fields excluded: descriptions, notes, projects, tags, timestamps, session_id. No free text, no dates finer than `date`, no IDs that link back to a session.
+
+Apache-2.0, same as the rest of the repo.
+
 ## Sharing and Privacy
 
 `/ghost-hours share` exports your data for research. The export strips descriptions, notes, project names, tags, timestamps (date only retained), and session IDs. Retrospection scores are folded into their session rows at export time, so no session ID ever leaves your machine.
@@ -215,7 +225,7 @@ Read these before using Ghost Hours data in research.
 
 **No peer review.** The Ghost Hours Framework (Pollock 2026) is self-published by Raven Systems Inc. The taxonomy is a proposed classification, not an established standard. External validation is welcomed.
 
-**n=1.** The proof-of-concept above is one participant over 140 days. Patterns may not generalize. The dataset becomes meaningful at n>10 with longitudinal coverage.
+**n=1.** The proof-of-concept above is one participant over 145 days. Patterns may not generalize. The dataset becomes meaningful at n>10 with longitudinal coverage.
 
 **Backlog months are self-reported.** Perceived delay, not measured duration. The Backlog Weight function dampens outliers.
 
