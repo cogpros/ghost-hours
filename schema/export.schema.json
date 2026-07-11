@@ -47,6 +47,11 @@
           },
           "fwr": { "type": "integer", "minimum": 1, "maximum": 10 },
           "fwr_source": { "type": "string", "enum": ["field-report", "manual", "migrated"] },
+          "condition": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$",
+            "description": "Process-regime slug from the entry's condition: tag (see SPEC Condition Tagging). The only tag content that exports; a protocol label, never free text."
+          },
           "schema_version": { "type": "string" }
         },
         "additionalProperties": false

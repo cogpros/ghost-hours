@@ -346,7 +346,7 @@ Opt-in research data export.
 2. User confirms
 3. Generates export file at `<log-dir>/share/YYYY-MM-DD-export.json` with:
    - Random participant ID (generated once, stored in config)
-   - All session entries stripped of: desc, note, fwr_note, project, tags, ts, session_id
+   - All session entries stripped of: desc, note, fwr_note, project, tags, ts, session_id. Exception: a `condition:` tag exports as a bare `condition` slug field. It is a process-regime label (see Condition Tagging), never free text, and process experiments need it in shared data.
    - Retains: date, type, entry_class, subtype, human_mins, gh_mins, gh_confidence, backlog_months, backlog_weight, fwc, fwc_source, fwc_eom, fwr, fwr_source, schema_version
    - Retrospection scores are folded into their session rows by session_id BEFORE the id is dropped. Retrospection entries never export with a session_id -- the id is a re-identification vector. Orphan retrospections (whose session is not in the log) export as standalone rows with date and score only.
    - Top-level counters `x_suppressed_tags` and `x_suppressed_projects` record how many entries had those fields stripped, so analysts know the shape of what was withheld.

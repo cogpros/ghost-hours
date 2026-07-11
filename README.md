@@ -203,7 +203,7 @@ The de-identified export ships in this repo at [`dataset/ghost-hours-export-2026
 
 Fields included: `date`, `type`, `entry_class`, `subtype`, `human_mins`, `gh_mins`, `gh_confidence`, `backlog_months`, `backlog_weight`, `fwc`, `fwc_source`, `fwc_eom`, `fwr`, `fwr_source`.
 
-Fields excluded: descriptions, notes, projects, tags, timestamps, session_id. No free text, no dates finer than `date`, no IDs that link back to a session.
+Fields excluded: descriptions, notes, projects, tags, timestamps, session_id. No free text, no dates finer than `date`, no IDs that link back to a session. One exception: a `condition:` tag (process-regime slug, see the SPEC's Condition Tagging section) exports as a `condition` field, because process experiments need that label in shared data. It is a protocol slug, never free text.
 
 Apache-2.0, same as the rest of the repo.
 
