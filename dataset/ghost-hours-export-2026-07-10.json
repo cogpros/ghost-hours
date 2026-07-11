@@ -10568,7 +10568,8 @@
       "human_mins": 0,
       "gh_mins": 0,
       "schema_version": "1.0",
-      "participant_id": "ANON-001"
+      "participant_id": "ANON-001",
+      "condition": "hugr"
     }
   ]
 }
