@@ -197,6 +197,8 @@ If declined, move on. If FW-C < 5, skip this step.
 
 If the operator tracks entries for an external program (an R&D tax-credit claim, a research study, an internal initiative), add the relevant tag via `--tags`. This protocol does not prescribe these programs; tags are the extension point. If nothing applies, move on silently.
 
+If a condition regime is active (declared by a dated `methodology-note` per the SPEC's Condition Tagging section), add its `condition:` tag to every session logged under it -- automatically, not by asking. Conditions are forward-only; never add a `condition:` tag to an entry that predates the regime declaration.
+
 ### Step 10: Save fact sheet to disk.
 
 Write the populated fact sheet (extractor output + operator-filled fields) to:

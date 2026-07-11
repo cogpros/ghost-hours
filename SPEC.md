@@ -151,7 +151,7 @@ One line per entry. One file. Human-readable. Grep-friendly.
 |-------|------|------------|
 | subtype | "restoration", "bypass", "augmentation" | Unlock classification. REQUIRED when type is "unlock" (the v1.0 writer gate rejects unlocks without one); MUST be absent otherwise. JSON Schema encodes this as a conditional. |
 | gh_confidence | "low", "medium", "high" | How confident is the GH estimate? |
-| tags | string[] | User-defined tags |
+| tags | string[] | User-defined tags. The `condition:` prefix is reserved (see Condition Tagging). |
 | backlog_months | float | How long this waited |
 | backlog_weight | float | Calculated: sqrt(BM/12) |
 | fwc | integer 1-10 | Felt Weight of Completion |
@@ -159,6 +159,26 @@ One line per entry. One file. Human-readable. Grep-friendly.
 | fwc_eom | integer 1-10 | The agent's blind FW-C estimate, computed silently at logging time and revealed only during retro. Field name retained for dataset compatibility with pre-1.0 logs; read it as `fwc_agent`. |
 | note | string | Verbatim reflection |
 | project | string | Project name |
+
+### Condition Tagging
+
+Ghost Hours logs one pair's output over time. Some questions need more than that: does the same human produce more with a different *process* binding them to the machine? (Kasparov, 2010, on freestyle chess: "Weak human + machine + better process was superior to ... a strong human + machine + inferior process.") Testing that requires labeling which process regime produced each entry.
+
+The convention: a tag with the reserved prefix `condition:` names the process regime active during the session -- for example `condition:full-stack` vs `condition:bare-chat`. One `condition:` tag per entry, recorded at log time like any other tag. No schema change; analysis filters on the prefix.
+
+**The integrity rule: conditions are forward-only. Never backfill.** A `condition:` tag asserts "this regime was recorded as active when the session was logged." Stamping old rows with a tag written later converts a retroactive inference into what looks like a contemporaneous observation. That is fabrication, even when the inference is true.
+
+When adopting condition tagging over an existing log, declare the regime instead of rewriting history: log one `methodology-note` entry, dated the day of adoption, stating what regime the prior entries were collected under and that per-entry tagging begins now. Analysts may then treat pre-adoption rows as belonging to the declared regime, with the provenance visible in the log itself. This is the protocol-amendment pattern from longitudinal research: amendments are dated and appended; observations are never edited.
+
+```json
+{
+  "type": "methodology-note",
+  "date": "2026-07-10",
+  "desc": "Protocol amendment: condition tagging adopted. All prior entries were collected under condition:full-stack by construction; none are retroactively tagged. Per-entry condition: tagging begins with this entry.",
+  "human_mins": 0,
+  "gh_mins": 0
+}
+```
 
 ### Retrospection Entry
 

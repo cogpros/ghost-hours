@@ -175,6 +175,8 @@ If FW-C < 5, the note is optional.
 
 Same as `closing-time`. If the operator tracks entries for an external program (an R&D tax-credit claim, a research study, an internal initiative), add the relevant tag via `--tags`. If nothing applies, move on.
 
+Same as `closing-time` for condition tagging: if a condition regime is active (declared by a dated `methodology-note`), add its `condition:` tag to every session, forward-only, never backfilled.
+
 ### Step 10: Save fact sheet to disk
 
 Write the populated fact sheet to:
