@@ -164,11 +164,13 @@ One line per entry. One file. Human-readable. Grep-friendly.
 
 Ghost Hours logs one pair's output over time. Some questions need more than that: does the same human produce more with a different *process* binding them to the machine? (Kasparov, 2010, on freestyle chess: "Weak human + machine + better process was superior to ... a strong human + machine + inferior process.") Testing that requires labeling which process regime produced each entry.
 
-The convention: a tag with the reserved prefix `condition:` names the process regime active during the session -- for example `condition:full-stack` vs `condition:bare-chat`. One `condition:` tag per entry, recorded at log time like any other tag. No schema change; analysis filters on the prefix.
+The convention: a tag with the reserved prefix `condition:` names the process regime active during the session -- for example `condition:full-stack` vs `condition:bare-chat`. At most one `condition:` tag per entry, recorded at log time; it may coexist with any other tags. No schema change is required; analysis filters on the prefix. Implementations MAY cache the active regime (for example in config) so writers need not scan the log per session; the log's methodology-note remains the source of truth.
 
 **The integrity rule: conditions are forward-only. Never backfill.** A `condition:` tag asserts "this regime was recorded as active when the session was logged." Stamping old rows with a tag written later converts a retroactive inference into what looks like a contemporaneous observation. That is fabrication, even when the inference is true.
 
-When adopting condition tagging over an existing log, declare the regime instead of rewriting history: log one `methodology-note` entry, dated the day of adoption, stating what regime the prior entries were collected under and that per-entry tagging begins now. Analysts may then treat pre-adoption rows as belonging to the declared regime, with the provenance visible in the log itself. This is the protocol-amendment pattern from longitudinal research: amendments are dated and appended; observations are never edited.
+When adopting condition tagging over an existing log, declare the regime instead of rewriting history: log one `methodology-note` entry, dated the day of adoption, stating what regime the prior entries were collected under and that per-entry tagging begins now. This is the protocol-amendment pattern from longitudinal research: amendments are dated and appended; observations are never edited.
+
+A declaration and a tag are different evidence classes and MUST NOT be pooled silently. A per-entry `condition:` tag is a recorded observation (the regime was logged as active at write time). A declared regime covering pre-adoption rows is an inference, however well-founded. Condition comparisons SHOULD use recorded rows; analyses that include declared-regime rows MUST report the two classes separately or state that they were pooled and why.
 
 ```json
 {
