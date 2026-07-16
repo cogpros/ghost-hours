@@ -86,9 +86,22 @@ print(json.dumps(entry))
   echo "$entry" >> "$RESOLVED_FILE"
   chmod 600 "$RESOLVED_FILE"
   EMIT="$DIR/adapters/emit-event.sh"
-  [[ -x "$EMIT" ]] && "$EMIT" "resolve" "work_resolved" "$item" "type=$type, reason=$reason" "work" 2>/dev/null || true
+  # park is NOT a closure. "Acknowledged, not now" is the opposite of resolved, so it emits its
+  # own event type — a consumer harvesting completion claims by event name must never see a park
+  # as done. absorb/kill/done ARE closures (kill = decided-against, which genuinely resolves it).
+  # Fixed 2026-07-15: one event name across all four types made every park read as "done".
+  if [[ "$type" == "park" ]]; then
+    EVENT="work_parked"
+  else
+    EVENT="work_resolved"
+  fi
+  [[ -x "$EMIT" ]] && "$EMIT" "resolve" "$EVENT" "$item" "type=$type, reason=$reason" "work" 2>/dev/null || true
 
-  echo "Resolved [$type]: $item"
+  if [[ "$type" == "park" ]]; then
+    echo "Parked (deferred, NOT resolved): $item"
+  else
+    echo "Resolved [$type]: $item"
+  fi
 }
 
 cmd_list() {
