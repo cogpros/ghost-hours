@@ -99,7 +99,7 @@ Before moving to Phase 2, triage each "Not completed" item from Phase 1:
 
 1. **Can you resolve this right now?** (a one-line fix, a config change, deleting a stale file) → Do it. Remove from the Not completed list.
 2. **Already handled by other work this session?** → Run: `[skill_dir]/scripts/resolve.sh absorb "item" "absorbed by: what handled it" --source closing-time`
-3. **Waiting on external input, blocked, or not actionable now?** → Run: `[skill_dir]/scripts/resolve.sh park "item" "reason" --source closing-time`
+3. **Waiting on external input, blocked, or not actionable now?** → Run: `[skill_dir]/scripts/resolve.sh file "item" "reason" --source closing-time`
 4. **No longer relevant?** → Run: `[skill_dir]/scripts/resolve.sh kill "item" "why" --source closing-time`
 5. **Real unresolved work that needs tracking?** → Confirm it is in your task system; if not, add it. Use whatever task tracker you run — a kanban CLI, an issue tracker, a TODO file. Always use an idempotency key or stable title derived from the item (e.g. `ct-<kebab-title>`) so re-closes never duplicate entries. Worked example with the hermes kanban CLI: `hermes kanban --board <slug> create "item" --body "context + session date" --idempotency-key ct-<kebab-title>`.
 
@@ -371,7 +371,7 @@ Do NOT write the state file unless all phases actually ran. Do NOT write it earl
 - `adapters/discord-post.sh` — operator notification (upstream or stdout)
 - `mark-closed.sh` — Phase 5.3 seal writer
 - `thread-close.sh` — Discord thread mode pipeline (deprecated record shape; reference)
-- `resolve.sh` — Phase 1.5 absorb/park/kill verbs
+- `resolve.sh` — Phase 1.5 file/absorb/kill verbs
 - `sweep.sh` + `secret-scan.sh` — bundled sweep worker, self-locating, config in `[skill_dir]/config/`
 
 **Required state paths (defaults; state root overridable via `CLOSING_TIME_STATE`):**

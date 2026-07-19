@@ -82,7 +82,7 @@ Say: "Capture done." Proceed to Phase 1.5.
 Same as `closing-time`. Triage each "Not completed" item:
 - Can resolve now → do it.
 - Already absorbed by other work → `[closing-time]/scripts/resolve.sh absorb`
-- Blocked / external → `[closing-time]/scripts/resolve.sh park`
+- Blocked / external → `[closing-time]/scripts/resolve.sh file`
 - No longer relevant → `[closing-time]/scripts/resolve.sh kill`
 - Real unresolved → confirm it is in your task system.
 
