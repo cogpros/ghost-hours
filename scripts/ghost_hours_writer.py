@@ -278,6 +278,9 @@ def build_session_entry(
     entry = {
         "session_id": generate_session_id(),
         "schema_version": SCHEMA_VERSION,
+        # the day is the `date` field (LOCAL); never derive it from ts[:10] (UTC).
+        # Post-18:00-local entries carry the next UTC day in ts — 42% of the
+        # dataset day-mismatches by design (card t_b1367874).
         "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "date": datetime.now().strftime("%Y-%m-%d"),
         "type": type_,

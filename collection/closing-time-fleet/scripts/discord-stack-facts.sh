@@ -90,6 +90,10 @@ DEAD_PANE_RE='^[[:space:]]*(API Error: 401|Invalid authentication credentials|40
 
 # ---- args -------------------------------------------------------------------
 DATE="$(date +%Y-%m-%d)"
+# DATE is a LOCAL day; bus stamps are UTC-Z. Filter by the local-day→UTC window,
+# never `grep '"ts": "$DATE'` — an evening close would drop everything since 18:00
+# local (EyeofHorus 2026-08-02, card t_b1367874). Helper ships next to this script.
+DAY_FILTER="$(cd "$(dirname "$0")" && pwd)/bus-local-day-filter.py"
 DO_EMIT=0
 DO_GH=0
 while [ $# -gt 0 ]; do
@@ -290,7 +294,7 @@ loose_ends() {
   local agent="$1"
   if [ ! -f "$BUS_FILE" ]; then echo "UNREACHABLE(bus)"; return; fi
   local lines
-  lines="$(grep "\"ts\": \"$DATE" "$BUS_FILE" 2>/dev/null \
+  lines="$(python3 "$DAY_FILTER" "$DATE" < "$BUS_FILE" 2>/dev/null \
     | grep -iE "\"source\": \"(${agent}|${agent}:[^\"]*|gateway:${agent}[^\"]*|auth-heartbeat:${agent})\"" \
     | grep -iE 'cron_failed|_failed|severity_signal|divergence|error|stalled|blocked')"
   if [ -z "$lines" ]; then echo "none on bus"; return; fi
@@ -305,7 +309,7 @@ heartbeat_status() {
   local agent="$1"
   # Most recent auth-failed event today for this agent, if any.
   local failed
-  failed="$(grep "\"ts\": \"$DATE" "$BUS_FILE" 2>/dev/null \
+  failed="$(python3 "$DAY_FILTER" "$DATE" < "$BUS_FILE" 2>/dev/null \
     | grep "\"source\": \"auth-heartbeat:$agent\"" \
     | grep "auth_failed" | tail -1)"
   if [ -n "$failed" ] && have python3; then
@@ -334,7 +338,7 @@ work_shipped() {
   local agent="$1"
   if [ ! -f "$BUS_FILE" ]; then echo "0|UNREACHABLE: bus file missing"; return; fi
   local lines
-  lines="$(grep "\"ts\": \"$DATE" "$BUS_FILE" 2>/dev/null \
+  lines="$(python3 "$DAY_FILTER" "$DATE" < "$BUS_FILE" 2>/dev/null \
     | grep -iE "\"source\": \"(${agent}|${agent}:[^\"]*|gateway:${agent}[^\"]*)\"" \
     | grep -iE 'cron_completed|cron_failed|severity_signal|commit_shipped|subagent_complete|session_stop|task_completed|_emitted')"
   if [ -z "$lines" ]; then echo "0|no work events on bus today"; return; fi
