@@ -2,10 +2,10 @@
   "dataset": "The Ghost Hours Open Dataset 2026",
   "schema_version": "1.0",
   "participant_id": "ANON-001",
-  "export_date": "2026-08-16",
-  "session_count": 882,
+  "export_date": "2026-08-23",
+  "session_count": 885,
   "retrospection_count": 20,
-  "x_suppressed_tags": 603,
+  "x_suppressed_tags": 605,
   "x_suppressed_projects": 31,
   "entries": [
     {
@@ -11953,6 +11953,49 @@
       "fwc": 5,
       "fwc_source": "eom-blind",
       "subtype": "bypass",
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-08-20",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 26,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "eom-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-08-20",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 26,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "eom-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-08-20",
+      "type": "unlock",
+      "entry_class": "artifact",
+      "human_mins": 193,
+      "gh_mins": 7200,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "operator",
+      "subtype": "augmentation",
+      "fwc_eom": 3,
       "participant_id": "ANON-001"
     }
   ]
