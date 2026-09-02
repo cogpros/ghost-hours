@@ -1,6 +1,6 @@
 ---
 name: closing-time-fleet
-description: 'Discord-wide stack close. Use when the operator says "closing time discord", "close the stack", or "discord fact sheet" — the Discord-native end-of-session protocol that closes an ENTIRE fleet of agents across many channels, not one CLI session. Builds the agent roster, determines liveness by fusing each agent''s auth-heartbeat (authoritative) with its tmux pane — a launch banner is never treated as proof of life, so a banner-up but auth-dead agent reads ZOMBIE, not ALIVE — pulls per-agent work-shipped from the bus, synthesizes cross-agent zombies/divergences, computes a first-cut Ghost Hours timing for the home channel, writes daily memory + a stack-day seal, emits a distinct bus event, and ends by printing the coordinator runtime restart command (context-shed). Run from the coordinator agent''s Discord runtime. NOT FOR: a single CLI session close (use closing-time or closing-time-autofill), a single Discord thread close (that is closing-time thread mode), mid-session checkpoints.'
+description: 'Discord-wide stack close: the Discord-native end-of-session protocol that closes an ENTIRE fleet of agents across many channels, not one CLI session. Builds the agent roster, judges per-agent liveness from the auth-heartbeat and the tmux pane, pulls per-agent work-shipped from the bus, synthesizes cross-agent zombies/divergences, computes a first-cut Ghost Hours timing for the home channel, writes daily memory + a stack-day seal, emits a distinct bus event, and ends by printing the coordinator runtime restart command (context-shed). Run from the coordinator agent''s Discord runtime. NOT FOR: a single CLI session close (use closing-time or closing-time-autofill), a single Discord thread close (that is closing-time thread mode), mid-session checkpoints.'
 user-invocable: true
 metadata:
   version: "1.0.0"
@@ -8,10 +8,6 @@ metadata:
   trigger-phrase: "closing time discord"
 triggers:
   - "closing time discord"
-  - "close out discord"
-  - "close the stack"
-  - "discord fact sheet"
-  - "discord close"
 ---
 
 # Closing Time Fleet — Agent Instructions
@@ -154,10 +150,10 @@ cross-agent pattern.
 
 ## Phase 3: Ghost Hours (first cut — single-channel home-channel timing)
 
-Timing IS available — do NOT claim it isn't. Two sources: **your message-archive SQLite
-store** (`FLEET_MESSAGE_DB`, a `messages` table with `channel_id`, `author_id`,
-`created_at`) and the **Discord API** (every message carries an ISO timestamp; reachable
-live via the coordinator runtime's `fetch_messages` tool).
+Timing comes from two sources: **your message-archive SQLite store** (`FLEET_MESSAGE_DB`,
+a `messages` table with `channel_id`, `author_id`, `created_at`) and the **Discord API**
+(every message carries an ISO timestamp; reachable live via the coordinator runtime's
+`fetch_messages` tool).
 
 The helper's `--ghost-hours` block computes, for **the home channel only**:
 
@@ -175,16 +171,14 @@ gap before each operator message; agent-time = operator-msg → agent-reply gap.
 **FW-C stays operator-confirmed** — felt-weight is the operator's, same as every
 closing-time variant. HH/GH is *computed from timestamps*, not invented and not deferred.
 
-### v2 TODO — multi-agent parallel attribution (NOT in v1, do not fake)
+### Cross-channel attribution — derive it or say you can't
 
-The real design work is attributing human-time and per-agent agent-time across the
-*concurrent* surface — the operator messaging the coordinator while another agent works
-elsewhere. Whose human-time when the operator is across several channels? Which agent's
-agent-time when N run concurrently? Serial-vs-parallel billable windows (concurrent agent
-work is parallel-billable, the CLI "hugr time" concept scaled to N simultaneous agents).
-**v1 implements single-channel home-channel timing only.** The cross-agent attribution
-model is a marked v2 TODO in both the helper output and here. Do not synthesize a
-multi-channel number you cannot derive — say "v1 single-channel only" and stop.
+This computes home-channel timing only. Attributing human-time and per-agent agent-time
+across the *concurrent* surface has no rule here: whose human-time when the operator is
+across several channels, which agent's agent-time when N run concurrently, and how
+serial-vs-parallel billable windows resolve are all open. Report the home-channel numbers.
+Never synthesize a multi-channel number you cannot derive from timestamps — say the
+cross-channel attribution isn't available and stop.
 
 ## Phase 4: FW-C (operator-confirmed, the one human field)
 
@@ -294,7 +288,7 @@ Print it. Do NOT run it yourself — you cannot restart the runtime you are runn
   the **bus + filesystem (panes/logs/heartbeat)**; Discord transcripts are the layer only
   for channels the coordinator *can* read. The helper does not depend on reading private
   channels.
-- **Multi-agent GH attribution is v2.** v1 is single-channel home-channel timing only (see
+- **Multi-agent GH attribution is not implemented.** Timing is home-channel only (see
   Phase 3).
 - **Pane/heartbeat divergence is expected after a restart.** A freshly-restarted agent pane
   reads ALIVE while a stale `*_auth_failed` heartbeat event from earlier the same day still

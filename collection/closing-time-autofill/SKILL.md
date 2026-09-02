@@ -2,11 +2,7 @@
 name: closing-time-autofill
 triggers:
   - "/closing-time-autofill"
-  - "auto close everything yourself"
-  - "auto close it all out yourself"
-  - "close out while I sleep"
-  - "fill it all out yourself"
-description: Auto-fill variant of closing-time. Operator-fired (the operator must type the slash command or say "auto close everything yourself") but the agent completes all operator-fill fields — FW-C, drift, GH estimate, subtype, verbatim note — and fires the seal autonomously. For when the operator is asleep, depleted, or explicitly delegates the whole protocol. FW-C and other felt-weight values are tagged agent-estimated in the fact sheet and log entry so the research dataset stays honest. Distinct from closing-time (which waits at operator-only steps). NOT FOR routine close where the operator can answer (use closing-time); mid-session checkpoints.
+description: Auto-fill variant of closing-time. Operator-fired only (an explicit slash-command invocation, or an explicit verbal delegation of the whole close); the agent then completes all operator-fill fields — FW-C, drift, GH estimate, subtype, verbatim note — and fires the seal autonomously. For when the operator is asleep, depleted, or explicitly delegates the whole protocol. FW-C and other felt-weight values are tagged agent-estimated in the fact sheet and log entry so the research dataset stays honest. Distinct from closing-time (which waits at operator-only steps). NOT FOR routine close where the operator can answer (use closing-time); mid-session checkpoints.
 user-invocable: true
 metadata:
   version: "2.0.0"
@@ -82,7 +78,7 @@ Say: "Capture done." Proceed to Phase 1.5.
 Same as `closing-time`. Triage each "Not completed" item:
 - Can resolve now → do it.
 - Already absorbed by other work → `[closing-time]/scripts/resolve.sh absorb`
-- Blocked / external → `[closing-time]/scripts/resolve.sh file`
+- Blocked / external → `[closing-time]/scripts/resolve.sh park`
 - No longer relevant → `[closing-time]/scripts/resolve.sh kill`
 - Real unresolved → confirm it is in your task system.
 
@@ -169,7 +165,7 @@ Do NOT generate the note. Do NOT paraphrase. Pull a real quote from the transcri
 
 If FW-C < 5, the note is optional.
 
-**Mark the agent-fill structurally:** pass `--fwc-source agent-blind` (done in the call below). The writer records this in the `fwc_source` field — do NOT smear an "agent-estimated" stamp into `--note` prose (an earlier draft did; the structural field replaced it). The `fwc_source` field is what makes the dataset honest.
+**Mark the agent-fill structurally:** pass `--fwc-source agent-blind` (done in the call below). The writer records this in the `fwc_source` field. Keep the marker out of `--note` prose — `--note` carries the operator's verbatim words only. The `fwc_source` field is what makes the dataset honest.
 
 ### Step 9: Optional program tagging
 

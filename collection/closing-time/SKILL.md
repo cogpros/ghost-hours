@@ -1,6 +1,6 @@
 ---
 name: closing-time
-description: 'Use when the operator says "closing time" or "fact sheet" or "session fact sheet" — the operator-issued end-of-session protocol, with mechanical fact-sheet pre-fill and type-aware Ghost Hours walkthrough. Does optional Discord thread routing, background repo sweep, capture, clarify, assay, GH measurement (with fact sheet pre-fill), record, seal. The Ghost Hours measurement (../../SKILL.md) runs as the Phase 3 sub-step inside this skill. NOT FOR: mid-session checkpointing, mid-session re-orientation, pre-close audit only, one-off log entries (use the ghost-hours skill directly).'
+description: 'The operator-issued end-of-session protocol for a CLI session: mechanical fact-sheet pre-fill, optional Discord thread routing, background repo sweep, capture, clarify, assay, a type-aware Ghost Hours walkthrough, record, seal. Use when the operator asks to close out the session. The Ghost Hours measurement (../../SKILL.md) runs as the Phase 3 sub-step inside this skill. NOT FOR: mid-session checkpointing, mid-session re-orientation, pre-close audit only, one-off log entries (use the ghost-hours skill directly).'
 user-invocable: true
 metadata:
   version: "2.0.0"
@@ -8,15 +8,11 @@ metadata:
   trigger-phrase: "closing time"
 triggers:
   - "closing time"
-  - "fact sheet"
-  - "session fact sheet"
 ---
 
 # Closing Time — Agent Instructions
 
 You are running the end-of-session protocol. It covers every phase, every script call, every state file write, plus a mechanical fact-sheet pre-fill at the front and a type-aware Ghost Hours walkthrough in Phase 3.
-
-Follow these instructions exactly. No shortcuts. No skipping. No batching. No judgment calls about what to skip.
 
 Paths written as `[skill_dir]` mean this skill's own directory. All state defaults to `~/.closing-time/` (override the state root with `CLOSING_TIME_STATE`).
 
@@ -98,9 +94,9 @@ Say nothing about Phase 0.7. Proceed silently to Phase 1.
 Before moving to Phase 2, triage each "Not completed" item from Phase 1:
 
 1. **Can you resolve this right now?** (a one-line fix, a config change, deleting a stale file) → Do it. Remove from the Not completed list.
-2. **Already handled by other work this session?** → Run: `[skill_dir]/scripts/resolve.sh absorb "item" "absorbed by: what handled it" --source closing-time`
-3. **Waiting on external input, blocked, or not actionable now?** → Run: `[skill_dir]/scripts/resolve.sh file "item" "reason" --source closing-time`
-4. **No longer relevant?** → Run: `[skill_dir]/scripts/resolve.sh kill "item" "why" --source closing-time`
+2. **Already handled by other work this session?** → Run: `[skill_dir]/scripts/resolve.sh absorb --source closing-time "item" "absorbed by: what handled it"`
+3. **Waiting on external input, blocked, or not actionable now?** → Run: `[skill_dir]/scripts/resolve.sh park --source closing-time "item" "reason"`
+4. **No longer relevant?** → Run: `[skill_dir]/scripts/resolve.sh kill --source closing-time "item" "why"`
 5. **Real unresolved work that needs tracking?** → Confirm it is in your task system; if not, add it. Use whatever task tracker you run — a kanban CLI, an issue tracker, a TODO file. Always use an idempotency key or stable title derived from the item (e.g. `ct-<kebab-title>`) so re-closes never duplicate entries. Worked example with the hermes kanban CLI: `hermes kanban --board <slug> create "item" --body "context + session date" --idempotency-key ct-<kebab-title>`.
 
 Only items surviving step 5 remain as "Not completed" bullets. Say: "Clarify done." Then proceed to Phase 2.
@@ -126,7 +122,7 @@ If no content found, say: "No content to route." Then proceed to Phase 3.
 
 ## Phase 3: Measure (Ghost Hours, type-aware, fact-sheet pre-filled)
 
-This is the full GH walkthrough: fact sheet pre-fill (HH, Agent time, Hugr time, intent, work shipped all auto-populated); type-aware appraisal (per-type counterfactual frames and ceilings instead of a universal 25x cap); skill-invocation auto-classification. The taxonomy is the Ghost Hours framework's (see the repo root SKILL.md; Pollock 2026).
+This is the full GH walkthrough: fact sheet pre-fill (HH, Agent time, Hugr time, intent, work shipped all auto-populated); type-aware appraisal (per-type counterfactual frames and ceilings); skill-invocation auto-classification. The taxonomy is the Ghost Hours framework's (see the repo root SKILL.md; Pollock 2026).
 
 ONE question per message. Wait for the answer before asking the next.
 
@@ -370,8 +366,8 @@ Do NOT write the state file unless all phases actually ran. Do NOT write it earl
 - `adapters/emit-event.sh` — observability emit (upstream or local fallback)
 - `adapters/discord-post.sh` — operator notification (upstream or stdout)
 - `mark-closed.sh` — Phase 5.3 seal writer
-- `thread-close.sh` — Discord thread mode pipeline (deprecated record shape; reference)
-- `resolve.sh` — Phase 1.5 file/absorb/kill verbs
+- `thread-close.sh` — Discord thread mode pipeline (Pre-Phase 0). Its `log` verb writes a pre-1.0 row shape — `human_mins` and `gh_mins` both set to the thread estimate, a non-uuid `session_id`, a `provenance` key, no `entry_class`/`schema_version` — which does not validate against `schema/session.schema.json`.
+- `resolve.sh` — Phase 1.5 park/absorb/kill verbs
 - `sweep.sh` + `secret-scan.sh` — bundled sweep worker, self-locating, config in `[skill_dir]/config/`
 
 **Required state paths (defaults; state root overridable via `CLOSING_TIME_STATE`):**
