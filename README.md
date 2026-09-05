@@ -57,7 +57,7 @@ whether you supply the appraisal or delegate it to your agent.
 |---|---|---|
 | [`closing-time`](collection/closing-time/SKILL.md) | You want the guided close. | You, one question at a time. |
 | [`closing-time-cli-facts`](collection/closing-time-cli-facts/SKILL.md) | You delegate the whole CLI close. | Your agent, with estimates labeled `agent-blind`. |
-| [`closing-time-fleet`](collection/closing-time-fleet/SKILL.md) | You are closing a Discord fleet. | The operator confirms felt weight. |
+| [`closing-time-buzz-facts`](collection/closing-time-buzz-facts/SKILL.md) | You are closing the Buzz working day across channels and agents. | You confirm felt weight, or explicitly delegate an agent estimate. |
 
 **CLI facts supports Claude Code, Codex, and Grok Build.** It binds the exact
 session transcript, records the actual runtime and agent label, and verifies a
@@ -65,6 +65,11 @@ saved measurement before sealing. The agent's blind score stays separate from
 its estimate of your felt weight. Matching retries reuse the existing record.
 
 `closing-time-autofill` remains an alias for `closing-time-cli-facts`.
+
+**Buzz facts closes the working day across the community.** It uses a
+read-only Buzz identity, captures work from the last seal to now, and saves a
+local report and measurement. See [Buzz setup and usage](collection/closing-time-buzz-facts/SKILL.md).
+The former Discord fleet close is retired and is no longer shipped.
 See [collection setup and configuration](collection/README.md) for the shared
 scripts, state paths, and adapters.
 
