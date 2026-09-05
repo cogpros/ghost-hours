@@ -12,6 +12,10 @@ triggers:
 
 # Closing Time — Agent Instructions
 
+When the operator delegates the entire CLI close, use
+`../closing-time-cli-facts/SKILL.md` (formerly `closing-time-autofill`).
+Without explicit delegation, keep the interactive walkthrough below.
+
 You are running the end-of-session protocol. It covers every phase, every script call, every state file write, plus a mechanical fact-sheet pre-fill at the front and a type-aware Ghost Hours walkthrough in Phase 3.
 
 Paths written as `[skill_dir]` mean this skill's own directory. All state defaults to `~/.closing-time/` (override the state root with `CLOSING_TIME_STATE`).

@@ -50,12 +50,23 @@ The taxonomy is the contribution. The tool is the delivery mechanism.
 
 ## Collection protocols
 
-The data above didn't come from ad-hoc logging. It came from a session-close
-protocol that runs the Ghost Hours measurement as its final act — every session,
-one question at a time, with the agent's blind score kept silent. The
-[`collection/`](collection/README.md) directory ships that protocol and its two
-variants: an operator-delegated autofill (honesty-tagged) and a multi-agent
-Discord stack close.
+Close a session with a saved fact sheet and a Ghost Hours measurement. Choose
+whether you supply the appraisal or delegate it to your agent.
+
+| Command | Use it when | Who supplies the appraisal |
+|---|---|---|
+| [`closing-time`](collection/closing-time/SKILL.md) | You want the guided close. | You, one question at a time. |
+| [`closing-time-cli-facts`](collection/closing-time-cli-facts/SKILL.md) | You delegate the whole CLI close. | Your agent, with estimates labeled `agent-blind`. |
+| [`closing-time-fleet`](collection/closing-time-fleet/SKILL.md) | You are closing a Discord fleet. | The operator confirms felt weight. |
+
+**CLI facts supports Claude Code, Codex, and Grok Build.** It binds the exact
+session transcript, records the actual runtime and agent label, and verifies a
+saved measurement before sealing. The agent's blind score stays separate from
+its estimate of your felt weight. Matching retries reuse the existing record.
+
+`closing-time-autofill` remains an alias for `closing-time-cli-facts`.
+See [collection setup and configuration](collection/README.md) for the shared
+scripts, state paths, and adapters.
 
 ## Why
 
@@ -93,7 +104,7 @@ Any platform that reads SKILL.md works the same way: copy the directory into its
 
 ### Requirements
 
-- Python 3.6+ (stdlib only)
+- Python 3.6+ for core Ghost Hours; Python 3.10+ for CLI facts closing (stdlib only)
 - bash
 - No pip install. No virtual environment. No external packages.
 
@@ -113,6 +124,27 @@ bash scripts/log-ghost-hours.sh --type unlock --subtype augmentation \
 ```
 
 The log lives at `~/.ghost-hours/log.jsonl`. Relocate it with `log_path` in `~/.ghost-hours/config.json` or the `GHOST_HOURS_LOG` environment variable.
+
+### Close a whole CLI session
+
+Keep the repository directory intact: the collection skills share scripts and
+use the bundled Ghost Hours writer. To use the delegated close without assuming
+that your agent has discovered nested skills, give it this request from the
+parent directory of your checkout:
+
+```text
+Read ghost-hours/collection/closing-time-cli-facts/SKILL.md and close this session.
+```
+
+If your runtime has registered the collection skill, invoke
+`/closing-time-cli-facts` directly. This delegates capture, appraisal, and seal;
+publication still requires explicit approval. Use `/closing-time` for the
+interactive version.
+
+Measurements use the same Ghost Hours log as the core commands. Bindings and
+seals default to `~/.closing-time/state/`, configurable with
+`CLOSING_TIME_STATE`. Missing or mismatched transcripts stop the close before
+measurement or seal rather than selecting another session.
 
 ### The logging flow
 

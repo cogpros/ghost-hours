@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 """
-session-fact-sheet.py — extract fact sheet from a Claude Code session JSONL.
+session-fact-sheet.py — extract fact sheet from a Claude Code, Codex, or Grok Build transcript.
 
 Usage:
     session-fact-sheet.py <session.jsonl>
     session-fact-sheet.py            # auto-pick this session (or most recent)
     session-fact-sheet.py --print-session-id
+    session-fact-sheet.py --runtime codex --session-id ID --transcript PATH --json
+
+Explicit runtime binding requires a matching native session ID and transcript.
+Grok Build expects chat_history.jsonl and its sibling events.jsonl. --seat is
+optional caller attribution; its default is the runtime name.
 
 Emits the fact sheet to stdout. No appraisal fields are filled — those are
 the operator's hand. This script populates only the mechanical fields.
@@ -32,7 +37,9 @@ Config:
 
 from __future__ import annotations
 
+import argparse
 import json
+import re
 import os
 import sys
 from collections import Counter
@@ -49,6 +56,25 @@ AUGMENTATION_SKILLS = {
 
 # Threshold above which a gap counts as idle (operator stepped away).
 IDLE_THRESHOLD_MIN = 15
+
+
+CODEX_SESSION_ID_RE = re.compile(
+    r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$",
+    re.IGNORECASE,
+)
+
+CODEX_TOOL_NAMES = {
+    "apply_patch": "Edit",
+    "exec_command": "Bash",
+    "read_mcp_resource": "Read",
+    "view_image": "Read",
+    "web__run": "Web",
+}
+
+HOST_INJECTED_USER_PREFIXES = (
+    "# AGENTS.md instructions for ",
+    "<environment_context>",
+)
 
 
 def parse_ts(s: str) -> datetime:
@@ -117,6 +143,13 @@ def _last_event_ts(path: Path) -> float:
         return 0.0
 
 
+def session_id_from_path(path: Path) -> str:
+    """Return the runtime session UUID from a Claude or Codex transcript path."""
+    match = CODEX_SESSION_ID_RE.search(path.stem)
+    return match.group(1) if match else path.stem
+
+
+
 def project_dir() -> Path:
     """Resolve the Claude Code projects dir holding this session's JSONL.
 
@@ -171,15 +204,103 @@ def auto_pick_session() -> Path:
     return candidates[0]
 
 
+def _codex_message_content(payload: dict) -> list[dict]:
+    """Convert Codex input_text/output_text blocks to Claude-style text blocks."""
+    out: list[dict] = []
+    for block in payload.get("content", []):
+        if not isinstance(block, dict):
+            continue
+        if block.get("type") not in {"input_text", "output_text", "text"}:
+            continue
+        text = block.get("text", "")
+        if text:
+            out.append({"type": "text", "text": text})
+    return out
+
+
+def _codex_tool_uses(payload: dict) -> list[dict]:
+    """Convert one Codex wrapper call into the concrete nested tool calls it carries."""
+    raw_input = payload.get("input", "")
+    if not isinstance(raw_input, str):
+        raw_input = ""
+    nested = re.findall(r"\btools\.([A-Za-z0-9_]+)\s*\(", raw_input)
+    names = nested or [payload.get("name", "?")]
+    uses = [
+        {
+            "type": "tool_use",
+            "name": CODEX_TOOL_NAMES.get(name, name),
+            "input": {},
+        }
+        for name in names
+    ]
+
+    # Codex rollout JSONL has no native Skill invocation event. A SKILL.md read
+    # is insufficient evidence because audits and routers read skills without
+    # invoking them. Leave skill telemetry empty rather than contaminate the
+    # automatic AUGMENTATION classifier with inferred invocations.
+    return uses
+
+
+def normalize_event(event: dict) -> dict:
+    """Normalize Codex response_item records to the Claude-style boundary API."""
+    if event.get("type") == "event_msg":
+        # Codex lifecycle/token events are emitted while the agent is active.
+        # Preserve their timestamps as agent boundaries so those gaps are not
+        # silently discarded from mechanical Agent time.
+        return {
+            "type": "assistant",
+            "timestamp": event.get("timestamp"),
+            "message": {"content": []},
+        }
+    if event.get("type") != "response_item":
+        return event
+    payload = event.get("payload", {})
+    if not isinstance(payload, dict):
+        return event
+    payload_type = payload.get("type")
+    timestamp = event.get("timestamp")
+    if payload_type == "reasoning":
+        return {
+            "type": "assistant",
+            "timestamp": timestamp,
+            "message": {"content": []},
+        }
+    if payload_type == "message" and payload.get("role") in {"user", "assistant", "developer"}:
+        return {
+            "type": payload.get("role"),
+            "timestamp": timestamp,
+            "message": {"content": _codex_message_content(payload)},
+        }
+    if payload_type == "custom_tool_call":
+        return {
+            "type": "assistant",
+            "timestamp": timestamp,
+            "message": {"content": _codex_tool_uses(payload)},
+        }
+    if payload_type == "custom_tool_call_output":
+        return {
+            "type": "user",
+            "timestamp": timestamp,
+            "message": {"content": [{"type": "tool_result"}]},
+        }
+    return event
+
+
+
 def load_events(path: Path) -> list[dict]:
     out = []
     with open(path) as f:
         for line in f:
             try:
-                out.append(json.loads(line))
+                out.append(normalize_event(json.loads(line)))
             except json.JSONDecodeError:
                 continue
     return out
+
+
+def _is_host_injected_user_text(text: str) -> bool:
+    stripped = text.lstrip()
+    return any(stripped.startswith(prefix) for prefix in HOST_INJECTED_USER_PREFIXES)
 
 
 def is_operator_message(e: dict) -> bool:
@@ -190,13 +311,13 @@ def is_operator_message(e: dict) -> bool:
     if not isinstance(msg, dict):
         return False
     content = msg.get("content")
-    # String content = direct operator message.
+    # String content = direct operator message, excluding host context envelopes.
     if isinstance(content, str):
-        return True
+        return bool(content.strip()) and not _is_host_injected_user_text(content)
     # List content with at least one 'text' block (no tool_result-only) = operator message.
     if isinstance(content, list):
         for c in content:
-            if c.get("type") == "text":
+            if c.get("type") == "text" and not _is_host_injected_user_text(c.get("text", "")):
                 return True
         return False
     return False
@@ -222,7 +343,7 @@ def operator_text(e: dict) -> str:
         return content
     if isinstance(content, list):
         for c in content:
-            if c.get("type") == "text":
+            if c.get("type") == "text" and not _is_host_injected_user_text(c.get("text", "")):
                 return c.get("text", "")
     return ""
 
@@ -238,25 +359,141 @@ def assistant_tool_uses(e: dict) -> list[dict]:
     return [c for c in content if c.get("type") == "tool_use"]
 
 
-def main() -> int:
-    # --print-session-id: print the session_id of the auto-picked JSONL and exit.
-    # Used by the closing-time skills to source the session_id directly from the
-    # JSONL file (canonical) instead of any shared session-id cache, which is
-    # clobbered by concurrent sessions.
-    if len(sys.argv) == 2 and sys.argv[1] == "--print-session-id":
-        path = auto_pick_session()
-        print(path.stem)
-        return 0
-    if len(sys.argv) > 2:
-        sys.exit("Usage: session-fact-sheet.py [<session.jsonl>] | --print-session-id")
-    if len(sys.argv) == 2:
-        path = Path(sys.argv[1]).expanduser()
-        if not path.exists():
-            sys.exit(f"Not found: {path}")
-    else:
-        path = auto_pick_session()
+def read_records(path: Path) -> list[dict]:
+    """Read a stable JSONL prefix, allowing an unfinished last write only."""
+    lines = path.read_text().splitlines()
+    records = []
+    for index, line in enumerate(lines):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except json.JSONDecodeError:
+            if index == len(lines) - 1:
+                break
+            raise ValueError(f"Malformed transcript record at line {index + 1}")
+        if not isinstance(record, dict):
+            raise ValueError("Transcript records must be objects")
+        records.append(record)
+    return records
 
-    events = load_events(path)
+
+def grok_events(path: Path, records: list[dict]) -> list[dict]:
+    """Join native query order to native turn order, rejecting ambiguous joins."""
+    queries = []
+    for record in records:
+        if record.get("type") != "user" or record.get("synthetic_reason"):
+            continue
+        content = record.get("content", "")
+        if isinstance(content, list):
+            content = "".join(b.get("text", "") for b in content if isinstance(b, dict))
+        match = re.search(r"<user_query>(.*?)</user_query>", content, re.DOTALL)
+        if match:
+            queries.append(match.group(1).strip())
+    native_events = read_records(path.with_name("events.jsonl"))
+    starts = [e for e in native_events if e.get("type") == "turn_started"]
+    if not queries or len(starts) != len(queries):
+        raise ValueError("Grok query/turn counts differ; timing join unavailable")
+    out = []
+    query_index = 0
+    active = False
+    previous = None
+    for event in native_events:
+        kind = event.get("type")
+        if kind not in {"turn_started", "turn_ended", "tool_started", "tool_ended"}:
+            continue
+        timestamp = event.get("ts")
+        if not timestamp:
+            raise ValueError("Grok turn/tool timestamp unavailable")
+        parsed = parse_ts(timestamp)
+        if parsed.tzinfo is None or (previous is not None and parsed < previous):
+            raise ValueError("Grok timestamps must be ordered and timezone aware")
+        previous = parsed
+        if kind == "turn_started":
+            if active:
+                raise ValueError("Overlapping Grok turns; timing join unavailable")
+            active = True
+            out.append({"type": "user", "timestamp": timestamp,
+                        "message": {"content": queries[query_index]}})
+            query_index += 1
+        else:
+            if not active:
+                raise ValueError("Grok turn/tool event outside a turn")
+            content = []
+            if kind == "tool_started":
+                content.append({"type": "tool_use", "name": event.get("tool_name", "?"), "input": {}})
+            out.append({"type": "assistant", "timestamp": timestamp,
+                        "message": {"content": content}})
+            if kind == "turn_ended":
+                active = False
+    return out
+
+
+def bind_transcript(args: argparse.Namespace) -> tuple[Path, str, list[dict]]:
+    """Explicit CLI binding never invokes latest-session discovery."""
+    if not args.session_id or not args.transcript:
+        raise ValueError("--runtime requires --session-id and --transcript")
+    path = Path(args.transcript).expanduser().resolve(strict=True)
+    records = read_records(path)
+    if args.runtime == "grok":
+        if path.name != "chat_history.jsonl" or path.parent.name != args.session_id:
+            raise ValueError("Grok transcript path does not match session ID")
+        return path, args.session_id, grok_events(path, records)
+    if session_id_from_path(path) != args.session_id:
+        raise ValueError("Transcript filename does not match session ID")
+    codex_meta = [e.get("payload", {}) for e in records if e.get("type") == "session_meta"]
+    if args.runtime == "codex":
+        if not codex_meta or any(e.get("id") != args.session_id for e in codex_meta):
+            raise ValueError("Codex session metadata does not match runtime/session ID")
+    else:
+        if codex_meta or any(e.get("type") == "response_item" for e in records):
+            raise ValueError("Transcript is not a Claude transcript")
+        native = [e for e in records if e.get("type") in {"user", "assistant"} and isinstance(e.get("message"), dict)]
+        if not native or any(e.get("sessionId", args.session_id) != args.session_id for e in records):
+            raise ValueError("Claude transcript does not match runtime/session ID")
+    events = [normalize_event(e) for e in records]
+    for event in events:
+        if event.get("type") not in {"user", "assistant"} or not isinstance(event.get("message"), dict):
+            continue
+        try:
+            timestamp = parse_ts(event["timestamp"])
+            if timestamp.tzinfo is None:
+                raise ValueError("timezone missing")
+        except (KeyError, TypeError, ValueError, AttributeError):
+            raise ValueError("Conversational timestamp missing or invalid; mechanical timing unavailable")
+    return path, args.session_id, events
+
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("path", nargs="?")
+    parser.add_argument("--runtime", choices=("claude", "codex", "grok"))
+    parser.add_argument("--session-id")
+    parser.add_argument("--transcript")
+    parser.add_argument("--seat")
+    parser.add_argument("--json", action="store_true")
+    parser.add_argument("--print-session-id", action="store_true")
+    args = parser.parse_args()
+    if args.runtime:
+        if args.path:
+            parser.error("Use --transcript with --runtime, not a positional path")
+        try:
+            path, session_id, events = bind_transcript(args)
+        except (OSError, ValueError, TypeError) as exc:
+            parser.error(str(exc))
+    else:
+        if args.session_id or args.transcript or args.seat or args.json:
+            parser.error("Explicit binding and --json require --runtime")
+        path = Path(args.path).expanduser() if args.path else auto_pick_session()
+        if not path.is_file():
+            parser.error(f"Not found: {path}")
+        session_id = session_id_from_path(path)
+        events = load_events(path)
+    if args.print_session_id:
+        print(session_id)
+        return 0
+
     if not events:
         sys.exit(f"No events parsed from {path}")
 
@@ -364,7 +601,6 @@ def main() -> int:
     # ── Render ───────────────────────────────────────────────────────────
     first_loc = to_local(first_ts)
     last_loc = to_local(last_ts)
-    session_id = path.stem
 
     out: list[str] = []
     p = out.append
@@ -435,7 +671,21 @@ def main() -> int:
     p("")
     p("═" * 72)
 
-    print("\n".join(out))
+    fact_sheet = "\n".join(out)
+    if args.json:
+        if len(timestamps) < 2 or last_ts <= first_ts:
+            parser.error("Timing unavailable: at least two distinct timestamps are required")
+        print(json.dumps({
+            "session_id": session_id, "runtime": args.runtime,
+            "seat": args.seat or args.runtime,
+            "source": args.runtime + "-cli", "transcript_path": str(path),
+            "human_mins": human_total, "agent_mins": agent_gap_min,
+            "hugr_mins": hugr_total, "timing_source": "mechanical",
+            "intent": intent_text, "fact_sheet": fact_sheet,
+            "user_quotes": [operator_text(e) for e in events if is_operator_message(e)],
+        }))
+    else:
+        print(fact_sheet)
     return 0
 
 
