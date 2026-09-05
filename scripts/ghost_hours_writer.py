@@ -35,6 +35,8 @@ SCHEMA_VERSION = "1.0"
 # agents' source names. Unknown sources default to "artifact".
 ENTRY_CLASS_MAP = {
     "claude-cli": "human",
+    "codex-cli": "human",
+    "grok-cli": "human",
     "cli": "human",
     "manual": "human",
     "cron": "scheduler",
@@ -168,7 +170,7 @@ def validate_session_entry(entry):
     if entry.get("subtype") and entry["subtype"] not in ("restoration", "bypass", "augmentation"):
         raise ValidationError(f"Invalid subtype: {entry['subtype']}")
 
-    if entry.get("fwc_source") and entry["fwc_source"] not in ("operator", "agent-blind"):
+    if entry.get("fwc_source") and entry["fwc_source"] not in ("operator", "agent-blind", "eom-blind"):
         raise ValidationError(f"Invalid fwc_source: {entry['fwc_source']}")
 
     if entry.get("fwc") is not None:
@@ -273,10 +275,12 @@ def build_session_entry(
     project=None,
     fwc_eom=None,
     fwc_source=None,
+    session_id=None,
+    seat=None,
 ):
     """Build a validated session entry dict (v1.0)."""
     entry = {
-        "session_id": generate_session_id(),
+        "session_id": session_id or generate_session_id(),
         "schema_version": SCHEMA_VERSION,
         # the day is the `date` field (LOCAL); never derive it from ts[:10] (UTC).
         # Post-18:00-local entries carry the next UTC day in ts — 42% of the
@@ -291,6 +295,8 @@ def build_session_entry(
         "source": source,
     }
 
+    if seat:
+        entry["seat"] = seat
     if subtype:
         entry["subtype"] = subtype
     if gh_confidence:
