@@ -39,22 +39,27 @@ Every close produces exactly one thing the root framework cares about: a
 Ghost Hours row with honest provenance (who scored the felt weight, and
 whether the agent's blind estimate stayed blind).
 
-## The three variants
+## The variants
 
 | Skill | When | Who fills the operator fields |
 |---|---|---|
 | [`closing-time/`](closing-time/SKILL.md) | Default. Operator present at session end. | Operator, one question at a time |
-| [`closing-time-autofill/`](closing-time-autofill/SKILL.md) | Operator delegates the whole close ("close out while I sleep"). | The agent, with every estimate honesty-tagged (`fwc_source`, `operator-override-fill`) |
+| [`closing-time-cli-facts/`](closing-time-cli-facts/SKILL.md) | Operator delegates the whole close ("close out while I sleep"). | The agent, with every estimate honesty-tagged (`fwc_source`, `operator-override-fill`) |
 | [`closing-time-fleet/`](closing-time-fleet/SKILL.md) | A Discord fleet of agents needs closing as one unit, not N sessions. | Read off the stack; FW-C stays operator-confirmed |
 
-The three variants share one implementation: `closing-time/scripts/`,
+`closing-time-autofill` remains a forwarding alias. The delegated CLI variant
+supports Claude Code, Codex, and Grok Build, with Python 3.10+ for its helpers.
+
+The variants share one implementation: `closing-time/scripts/`,
 `closing-time/config/`, and `closing-time/references/scoring-constants.md`.
-The autofill variant ships no scripts of its own. The fleet variant adds one
+The CLI variant ships no scripts of its own; its shared helper binds an exact
+session and writes through the bundled Ghost Hours writer, requiring a durable
+measurement receipt before sealing. It bypasses the argument-only adapter fallback. The fleet variant adds one
 helper (`discord-stack-facts.sh`) and reuses the rest.
 
 ## What's configurable
 
-- **State** defaults to `~/.closing-time/` (override root with `CLOSING_TIME_STATE`).
+- **Seal/binding state** defaults to `~/.closing-time/state/` (override with `CLOSING_TIME_STATE`).
 - **Adapters** (`closing-time/scripts/adapters/`) route log writes, bus events,
   and notifications to your stack via `CLOSING_TIME_UPSTREAM_DIR`, with local
   JSONL fallbacks so the protocol runs identically on a bare machine.

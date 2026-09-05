@@ -80,6 +80,8 @@ for e in sessions:
     if e.get("project"):
         x_suppressed_projects += 1
     stripped = {k: v for k, v in e.items() if k in KEEP_FIELDS}
+    if stripped.get("fwc_source") == "eom-blind":
+        stripped["fwc_source"] = "agent-blind"
     stripped["participant_id"] = participant_id
     # The condition: tag survives export as a bare `condition` field. It is a
     # protocol slug (process-regime label per SPEC Condition Tagging), not free

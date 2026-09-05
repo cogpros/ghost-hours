@@ -54,7 +54,8 @@ The data above didn't come from ad-hoc logging. It came from a session-close
 protocol that runs the Ghost Hours measurement as its final act — every session,
 one question at a time, with the agent's blind score kept silent. The
 [`collection/`](collection/README.md) directory ships that protocol and its two
-variants: an operator-delegated autofill (honesty-tagged) and a multi-agent
+variants: an operator-delegated CLI close for Claude Code, Codex, and Grok Build
+(honesty-tagged; the former autofill command remains an alias) and a multi-agent
 Discord stack close.
 
 ## Why

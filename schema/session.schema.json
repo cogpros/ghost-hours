@@ -24,6 +24,7 @@
         "human_mins": { "type": "integer", "minimum": 0 },
         "gh_mins": { "type": "integer", "minimum": 0 },
         "desc": { "type": "string", "maxLength": 280 },
+        "seat": { "type": "string", "description": "Optional local agent seat name; excluded from share exports." },
         "source": { "type": "string" },
         "schema_version": { "type": "string" },
         "subtype": { "type": "string", "enum": ["restoration", "bypass", "augmentation"] },
@@ -34,7 +35,7 @@
         "fwc": { "type": "integer", "minimum": 1, "maximum": 10 },
         "fwc_source": {
           "type": "string",
-          "enum": ["operator", "agent-blind"],
+          "enum": ["operator", "agent-blind", "eom-blind"],
           "description": "Who supplied the fwc score: the user (operator) or the agent estimating blind on the user's behalf."
         },
         "fwc_eom": {
