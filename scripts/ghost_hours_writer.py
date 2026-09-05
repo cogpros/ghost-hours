@@ -37,6 +37,7 @@ ENTRY_CLASS_MAP = {
     "claude-cli": "human",
     "codex-cli": "human",
     "grok-cli": "human",
+    "buzz-stack": "human",
     "cli": "human",
     "manual": "human",
     "cron": "scheduler",
