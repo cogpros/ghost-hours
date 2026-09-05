@@ -12,32 +12,26 @@ the counterfactual solo time.
 ## The pipeline
 
 ```
-  work session ends
+  CLI session or Buzz working day
         |
         v
-  closing-time  (or a variant)
-        |
-        |  Phase 0-2: silent agent FW-C, background repo sweep,
-        |             fact-sheet extraction, capture, clarify, assay
-        v
-  Phase 3: Measure  <-- this IS the Ghost Hours measurement
-        |             (type, subtype, GH estimate, backlog, FW-C, note)
-        v
-  scripts/adapters/log-leverage.sh
-        |
-        |-- upstream writer, if you have one (CLOSING_TIME_UPSTREAM_DIR)
-        '-- local fallback: ~/.closing-time/leverage-log.jsonl
+  capture evidence -> clarify work -> appraise Ghost Hours
         |
         v
-  rows in the ghost-hours log --> /ghost-hours report, retro, share
+  canonical Ghost Hours writer -> verified measurement
         |
         v
-  Phase 4-5: record creative work, push gate, seal
+  local report / fact sheet -> seal -> completion receipt
 ```
 
-Every close produces exactly one thing the root framework cares about: a
-Ghost Hours row with honest provenance (who scored the felt weight, and
-whether the agent's blind estimate stayed blind).
+CLI facts binds a native transcript. Buzz facts captures a relay window through
+read-only access. Both use the bundled Ghost Hours writer and verify the saved
+row before sealing. The interactive base protocol retains its configurable
+logging adapter; an argument-only fallback is a pending write, not a canonical
+measurement receipt.
+
+Every measurement records who supplied felt weight and preserves the agent's
+separate blind estimate.
 
 ## The variants
 
@@ -45,17 +39,19 @@ whether the agent's blind estimate stayed blind).
 |---|---|---|
 | [`closing-time/`](closing-time/SKILL.md) | Default. Operator present at session end. | Operator, one question at a time |
 | [`closing-time-cli-facts/`](closing-time-cli-facts/SKILL.md) | Operator delegates the whole close ("close out while I sleep"). | The agent, with every estimate honesty-tagged (`fwc_source`, `operator-override-fill`) |
-| [`closing-time-fleet/`](closing-time-fleet/SKILL.md) | A Discord fleet of agents needs closing as one unit, not N sessions. | Read off the stack; FW-C stays operator-confirmed |
+| [`closing-time-buzz-facts/`](closing-time-buzz-facts/SKILL.md) | Close the Buzz working day across channels, threads, and agents. | Operator-confirmed, or agent-estimated only on explicit delegation. |
 
 `closing-time-autofill` remains a forwarding alias. The delegated CLI variant
 supports Claude Code, Codex, and Grok Build, with Python 3.10+ for its helpers.
 
-The variants share one implementation: `closing-time/scripts/`,
-`closing-time/config/`, and `closing-time/references/scoring-constants.md`.
+The CLI variants share `closing-time/scripts/` and `closing-time/config/`.
+All variants reuse the root Ghost Hours writer and
+`closing-time/references/scoring-constants.md`.
 The CLI variant ships no scripts of its own; its shared helper binds an exact
 session and writes through the bundled Ghost Hours writer, requiring a durable
-measurement receipt before sealing. It bypasses the argument-only adapter fallback. The fleet variant adds one
-helper (`discord-stack-facts.sh`) and reuses the rest.
+measurement receipt before sealing. Buzz facts adds a read-only relay collector
+and a local measurement/seal helper.
+The retired Discord fleet skill and its posting/thread helpers are no longer shipped.
 
 ## What's configurable
 
@@ -65,8 +61,9 @@ helper (`discord-stack-facts.sh`) and reuses the rest.
   JSONL fallbacks so the protocol runs identically on a bare machine.
 - **Sweep whitelist** and **secret-scan patterns** live in
   `closing-time/config/` — both ship as examples; populate your own.
-- **Fleet identities** (operator id, home channel, agent sources) live in
-  `~/.closing-time/fleet.conf` — nothing is hardcoded.
+- **Buzz** uses an already-configured read-only CLI identity, `BUZZ_RELAY_URL`,
+  and `BUZZ_OPERATOR_NAME`. Its state lives under the state root in
+  `closing-time-buzz/`; work logs can be supplied with `BUZZ_WORK_LOGS_DIR`.
 
 ## Why publish the collection layer
 
