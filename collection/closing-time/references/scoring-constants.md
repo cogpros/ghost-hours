@@ -1,9 +1,9 @@
 # Closing-Time Scoring Constants — Single Source of Truth
 
-Shared by `closing-time`, `closing-time-autofill`, and `closing-time-fleet`.
+Shared by `closing-time`, `closing-time-cli-facts` and `closing-time-buzz-facts`, and the `closing-time-autofill` alias.
 Extracted to end copy-paste drift between the variants.
 **Rule: no closing-time SKILL.md re-types these values. They cite this file and Read it at
-Phase 3 (or Phase 4 for the fleet variant).** Change the values here, nowhere else.
+the measurement phase.** Change the values here, nowhere else.
 
 ## FW-C Anchor Chart (Felt Weight of Completion, 1–10)
 

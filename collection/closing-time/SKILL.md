@@ -1,6 +1,6 @@
 ---
 name: closing-time
-description: 'The operator-issued end-of-session protocol for a CLI session: mechanical fact-sheet pre-fill, optional Discord thread routing, background repo sweep, capture, clarify, assay, a type-aware Ghost Hours walkthrough, record, seal. Use when the operator asks to close out the session. The Ghost Hours measurement (../../SKILL.md) runs as the Phase 3 sub-step inside this skill. NOT FOR: mid-session checkpointing, mid-session re-orientation, pre-close audit only, one-off log entries (use the ghost-hours skill directly).'
+description: 'The operator-issued end-of-session protocol for a CLI session: mechanical fact-sheet pre-fill, background repo sweep, capture, clarify, assay, a type-aware Ghost Hours walkthrough, record, seal. Use when the operator asks to close out the session. The Ghost Hours measurement (../../SKILL.md) runs as the Phase 3 sub-step inside this skill. NOT FOR: mid-session checkpointing, mid-session re-orientation, pre-close audit only, one-off log entries (use the ghost-hours skill directly).'
 user-invocable: true
 metadata:
   version: "2.0.0"
@@ -24,26 +24,7 @@ Paths written as `[skill_dir]` mean this skill's own directory. All state defaul
 
 ONE phase at a time. Complete each phase before starting the next. Within Ghost Hours (Phase 3), ONE question per message. Wait for the answer before asking the next.
 
-## Pre-Phase 0: Discord Thread Routing (optional — skip if you don't run agents on Discord)
-
-Closing-time can run in two modes: terminal session mode (the default) and Discord thread mode. Detect which mode applies before any other phase.
-
-1. If the current invocation is responding to a message that arrived from Discord (the inbound message had a `<channel source="discord" chat_id="...">` envelope), capture `chat_id`.
-2. Run `bash [skill_dir]/scripts/thread-close.sh detect <chat_id>` — exit code 0 (channel type 11 or 12) means it's a thread; exit code 2 means it's a top-level channel or DM; other non-zero means detection failed (proceed as terminal mode).
-3. If thread mode: switch to the **Thread Mode Pipeline** below. Skip Phases 0–5 entirely. Thread mode is its own protocol.
-4. If terminal mode (the default): proceed to Phase 0 below.
-
-### Thread Mode Pipeline (5 steps, replaces Phases 0–5 when in a Discord thread)
-
-1. **Compute the silent agent FW-C** for the thread (1–10). Hold privately. Same rule as terminal Phase 0: never output this number. It goes into the log call as `<fwc_eom>` (the agent's blind estimate — the field name is retained for dataset compatibility) and nowhere else.
-2. **Fetch metadata.** `bash [skill_dir]/scripts/thread-close.sh fetch <chat_id>` returns a JSON object with `title`, `message_count`, `opened_at`, `parent_channel_id`, and a deterministic `gh_min_estimate` (clamped 60–240). If the fetch call fails (non-zero exit or empty output), abort thread mode: send "Thread metadata fetch failed; falling back to terminal closing-time" and proceed to Phase 0 below.
-3. **Single prompt to the operator** via Discord reply: "Closing this thread. FW-C 1-10? Optional 1-3 word tag. Optional one-line note." Wait for the reply. Parse the three pieces (FW-C is required; tag and note are optional).
-4. **Append leverage entry.** `bash [skill_dir]/scripts/thread-close.sh log <chat_id> <fwc> <fwc_eom> <gh_min> "<tag>" "<note>" '<meta_json>'`. Pass the JSON from step 2 as the seventh argument so the script doesn't re-call Discord. The script writes one row with `source: "discord:thread"`.
-5. **Final reply + optional lock.** Send: "Thread closed. GH:Xmin FW-C:Y. Logged." If the operator's reply contains the word "lock" as a standalone token (case-insensitive; e.g. "lock", "lock it", "yes lock"), call `bash [skill_dir]/scripts/thread-close.sh lock <chat_id>`. Substring matches like "deadlock" or "unlock" do not count. Default is no-lock so the thread can continue.
-
-That is the entire thread-mode pipeline. No fact sheet, no sweep, no content scan, no daily-log capture. The thread itself is the artifact; the leverage entry is the index row pointing back to it.
-
-## Phase 0: Gate (terminal mode)
+## Phase 0: Gate
 
 Before anything else, silently compute your own FW-C score for this session. Do NOT output it. Do NOT mention it. Do NOT hint at it. It goes into the `log-leverage.sh` call as `--fwc-eom` and nowhere else. If you output this score at any point during closing, you have broken the measurement instrument.
 
@@ -353,7 +334,6 @@ Do NOT write the state file unless all phases actually ran. Do NOT write it earl
 - **Session ID source is the JSONL, not a shared cache.** Phase 0.5 reads the session_id from THIS session's JSONL transcript via `session-fact-sheet.py --print-session-id`. A shared "current session id" cache is clobbered by any concurrent interactive session startup (multiple terminal windows, runtime re-spawns); the JSONL filename is unique per session and immutable. Two concurrent close runs in different sessions get different session_ids and don't stomp each other.
 - **Sweep abandonment.** If the operator abandons mid-protocol, the background sweep keeps committing unattended unless you explicitly call `sweep.sh cancel "$SWEEP_TAG"`.
 - **Modified tracked files are never auto-committed.** Sweep only auto-commits NEW (untracked) files matching whitelist globs. Modified tracked files stay for manual review by design.
-- **Discord thread mode is its own protocol.** When invoked from a Discord thread, Phases 0-5 are SKIPPED entirely. The Thread Mode Pipeline replaces them.
 - **HH/GH directionality.** HH = additive Hugr time. GH = ghost (solo or hire-and-coordinate counterfactual, larger).
 - **State file Seal replaces transcript-grep.** Grepping the transcript for a sentinel produced false positives. `mark-closed.sh` writes a state file verified by session_id match.
 - **Parallel session JSONL pick.** When `$CLAUDE_CODE_SESSION_ID` is absent the fact sheet falls back to a most-recent heuristic. If multiple sessions are open, verify the INTENT line matches before proceeding.
@@ -368,9 +348,7 @@ Do NOT write the state file unless all phases actually ran. Do NOT write it earl
 - `session-fact-sheet.py` — Phase 0.7 fact sheet extractor
 - `adapters/log-leverage.sh` — Phase 3 Step 11 Ghost Hours row writer (upstream or local fallback)
 - `adapters/emit-event.sh` — observability emit (upstream or local fallback)
-- `adapters/discord-post.sh` — operator notification (upstream or stdout)
 - `mark-closed.sh` — Phase 5.3 seal writer
-- `thread-close.sh` — Discord thread mode pipeline (Pre-Phase 0). Its `log` verb writes a pre-1.0 row shape — `human_mins` and `gh_mins` both set to the thread estimate, a non-uuid `session_id`, a `provenance` key, no `entry_class`/`schema_version` — which does not validate against `schema/session.schema.json`.
 - `resolve.sh` — Phase 1.5 park/absorb/kill verbs
 - `sweep.sh` + `secret-scan.sh` — bundled sweep worker, self-locating, config in `[skill_dir]/config/`
 
@@ -383,10 +361,8 @@ Do NOT write the state file unless all phases actually ran. Do NOT write it earl
 **Companion skills:**
 - `ghost-hours` (the repo root SKILL.md) — taxonomy reference; this protocol's Phase 3 is its measurement step
 - `../closing-time-autofill/` — the delegated auto-fill variant
-- `../closing-time-fleet/` — the multi-agent stack close
 
 **Optional:**
-- Discord bot token (only if using thread mode)
 - gitnexus (only for repos with `RUN_GITNEXUS=true` in `config/sweep-paths.conf`)
 
 ## Framing
