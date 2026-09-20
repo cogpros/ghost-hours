@@ -346,7 +346,7 @@ Opt-in research data export.
 2. User confirms
 3. Generates export file at `<log-dir>/share/YYYY-MM-DD-export.json` with:
    - Random participant ID (generated once, stored in config)
-   - All session entries stripped of: desc, note, fwr_note, project, tags, ts, session_id. Exception: a `condition:` tag exports as a bare `condition` slug field. It is a process-regime label (see Condition Tagging), never free text, and process experiments need it in shared data.
+   - All session entries stripped of: desc, note, fwr_note, project, all tag values, ts, session_id. No tag value, including `condition:diagnosed-tbi`, is emitted in export JSON.
    - Retains: date, type, entry_class, subtype, human_mins, gh_mins, gh_confidence, backlog_months, backlog_weight, fwc, fwc_source, fwc_eom, fwr, fwr_source, schema_version
    - Retrospection scores are folded into their session rows by session_id BEFORE the id is dropped. Retrospection entries never export with a session_id -- the id is a re-identification vector. Orphan retrospections (whose session is not in the log) export as standalone rows with date and score only.
    - Top-level counters `x_suppressed_tags` and `x_suppressed_projects` record how many entries had those fields stripped, so analysts know the shape of what was withheld.
@@ -354,7 +354,7 @@ Opt-in research data export.
 5. No network transmission occurs in v1.0. When the endpoint ships (v1.1), the share command will POST this file to ghosthours.ca/api/share with a 30-second timeout, single retry, and local confirmation of success/failure. Maximum payload: 1MB (~3,500 de-identified entries).
 
 **Privacy guarantees:**
-- No descriptions. No notes. No project names. No file paths. No timestamps (date only). No session IDs.
+- No descriptions. No notes. No project names. No tag values. No file paths. No timestamps (date only). No session IDs.
 - Participant ID is random, not derived from any personal info.
 - User reviews the exact payload before it leaves the machine.
 - Share is always manual. Never automatic. Never silent.
