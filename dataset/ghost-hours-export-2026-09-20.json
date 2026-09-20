@@ -2,10 +2,10 @@
   "dataset": "The Ghost Hours Open Dataset 2026",
   "schema_version": "1.0",
   "participant_id": "ANON-001",
-  "export_date": "2026-08-30",
-  "session_count": 896,
+  "export_date": "2026-09-20",
+  "session_count": 999,
   "retrospection_count": 20,
-  "x_suppressed_tags": 616,
+  "x_suppressed_tags": 719,
   "x_suppressed_projects": 33,
   "entries": [
     {
@@ -8040,7 +8040,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8055,7 +8055,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8070,7 +8070,7 @@
       "fwc_eom": 9,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8084,7 +8084,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8098,7 +8098,7 @@
       "fwc_eom": 4,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8113,7 +8113,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8128,7 +8128,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8143,7 +8143,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8158,7 +8158,7 @@
       "fwc_eom": 6,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8173,7 +8173,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8188,7 +8188,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8203,7 +8203,7 @@
       "fwc_eom": 6,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8217,7 +8217,7 @@
       "fwc_eom": 6,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8232,7 +8232,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8246,7 +8246,7 @@
       "fwc_eom": 5,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8260,7 +8260,7 @@
       "fwc_eom": 3,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8275,7 +8275,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8290,7 +8290,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8305,7 +8305,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8319,7 +8319,7 @@
       "fwc_eom": 6,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8334,7 +8334,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8349,7 +8349,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8364,7 +8364,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8379,7 +8379,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8394,7 +8394,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8408,7 +8408,7 @@
       "fwc_eom": 4,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8423,7 +8423,7 @@
       "fwc_eom": 5,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8438,7 +8438,7 @@
       "fwc_eom": 6,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8453,7 +8453,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8468,7 +8468,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8483,7 +8483,7 @@
       "fwc_eom": 4,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8498,7 +8498,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8513,7 +8513,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8528,7 +8528,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8543,7 +8543,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8558,7 +8558,7 @@
       "fwc_eom": 5,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8573,7 +8573,7 @@
       "fwc_eom": 5,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8588,7 +8588,7 @@
       "fwc_eom": 6,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8603,7 +8603,7 @@
       "fwc_eom": 7,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8618,7 +8618,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8633,7 +8633,7 @@
       "fwc_eom": 8,
       "schema_version": "1.0",
       "entry_class": "human",
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -8646,7 +8646,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -8661,7 +8661,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -8676,7 +8676,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9163,7 +9163,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9178,7 +9178,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9193,7 +9193,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9208,7 +9208,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9223,7 +9223,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9238,7 +9238,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -9252,7 +9252,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9267,7 +9267,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
     },
@@ -9281,7 +9281,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9296,7 +9296,7 @@
       "backlog_months": 0.25,
       "backlog_weight": 0.1443,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9311,7 +9311,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9326,7 +9326,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9341,7 +9341,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9356,7 +9356,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9371,7 +9371,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9386,7 +9386,7 @@
       "backlog_months": 5.0,
       "backlog_weight": 0.6455,
       "fwc": 3,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 3,
       "participant_id": "ANON-001"
     },
@@ -9400,7 +9400,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9415,7 +9415,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -9429,7 +9429,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9444,7 +9444,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9459,7 +9459,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -9474,7 +9474,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9489,7 +9489,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9504,7 +9504,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9519,7 +9519,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9534,7 +9534,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -9549,7 +9549,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9564,7 +9564,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9579,7 +9579,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9594,7 +9594,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9609,7 +9609,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9624,7 +9624,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -9646,7 +9646,7 @@
       "backlog_months": 3.0,
       "backlog_weight": 0.5,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9661,7 +9661,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9691,7 +9691,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9706,7 +9706,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -9721,7 +9721,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9736,7 +9736,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9751,7 +9751,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9766,7 +9766,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9781,7 +9781,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9796,7 +9796,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -9810,7 +9810,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9825,7 +9825,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -9840,7 +9840,7 @@
       "backlog_months": 0.3,
       "backlog_weight": 0.1581,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9855,7 +9855,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -9870,7 +9870,7 @@
       "backlog_months": 1.5,
       "backlog_weight": 0.3536,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9885,7 +9885,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9900,7 +9900,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9915,7 +9915,7 @@
       "backlog_months": 3.0,
       "backlog_weight": 0.5,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9930,7 +9930,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9945,7 +9945,7 @@
       "backlog_months": 5.0,
       "backlog_weight": 0.6455,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -9960,7 +9960,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -9975,7 +9975,7 @@
       "backlog_months": 2.5,
       "backlog_weight": 0.4564,
       "fwc": 9,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 9,
       "participant_id": "ANON-001"
@@ -9990,7 +9990,7 @@
       "backlog_months": 1.5,
       "backlog_weight": 0.3536,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10005,7 +10005,7 @@
       "backlog_months": 2.5,
       "backlog_weight": 0.4564,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10020,7 +10020,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10035,7 +10035,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10050,7 +10050,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10065,7 +10065,7 @@
       "backlog_months": 2,
       "backlog_weight": 0.6455,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10080,7 +10080,7 @@
       "backlog_months": 0.1,
       "backlog_weight": 0.0913,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10095,7 +10095,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10110,7 +10110,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -10124,7 +10124,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10139,7 +10139,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10154,7 +10154,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10169,7 +10169,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10184,7 +10184,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10199,7 +10199,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10214,7 +10214,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10229,7 +10229,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10244,7 +10244,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10259,7 +10259,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10274,7 +10274,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10289,7 +10289,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
     },
@@ -10303,7 +10303,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10318,7 +10318,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 3,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "participant_id": "ANON-001"
     },
     {
@@ -10331,7 +10331,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10346,7 +10346,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10361,7 +10361,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10376,7 +10376,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 9,
       "participant_id": "ANON-001"
@@ -10391,7 +10391,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10406,7 +10406,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10421,7 +10421,7 @@
       "backlog_months": 0.1,
       "backlog_weight": 0.0913,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10436,7 +10436,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10451,7 +10451,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10466,7 +10466,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10481,7 +10481,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10496,7 +10496,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10511,7 +10511,7 @@
       "backlog_months": 0.25,
       "backlog_weight": 0.1443,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10526,7 +10526,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10541,7 +10541,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10556,7 +10556,7 @@
       "backlog_months": 1.5,
       "backlog_weight": 0.3536,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10568,8 +10568,7 @@
       "human_mins": 0,
       "gh_mins": 0,
       "schema_version": "1.0",
-      "participant_id": "ANON-001",
-      "condition": "hugr"
+      "participant_id": "ANON-001"
     },
     {
       "schema_version": "1.0",
@@ -10581,7 +10580,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10596,7 +10595,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10611,11 +10610,10 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
-      "participant_id": "ANON-001",
-      "condition": "hugr"
+      "participant_id": "ANON-001"
     },
     {
       "schema_version": "1.0",
@@ -10627,7 +10625,7 @@
       "backlog_months": 4.0,
       "backlog_weight": 0.5774,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10642,7 +10640,7 @@
       "backlog_months": 4.0,
       "backlog_weight": 0.5774,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10657,7 +10655,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10672,7 +10670,7 @@
       "backlog_months": 3.0,
       "backlog_weight": 0.5,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10687,7 +10685,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10702,7 +10700,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10717,7 +10715,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10732,7 +10730,7 @@
       "backlog_months": 0.3,
       "backlog_weight": 0.1581,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10747,7 +10745,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10762,7 +10760,7 @@
       "backlog_months": 3.0,
       "backlog_weight": 0.5,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10777,7 +10775,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10792,7 +10790,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -10807,7 +10805,7 @@
       "backlog_months": 0.7,
       "backlog_weight": 0.2415,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 9,
       "participant_id": "ANON-001"
@@ -10822,7 +10820,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10837,7 +10835,7 @@
       "backlog_months": 3.0,
       "backlog_weight": 0.5,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10852,7 +10850,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10867,7 +10865,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10882,7 +10880,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -10897,7 +10895,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
     },
@@ -10911,7 +10909,7 @@
       "backlog_months": 0.25,
       "backlog_weight": 0.1443,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10926,7 +10924,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
     },
@@ -10940,7 +10938,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -10955,7 +10953,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
     },
@@ -10969,7 +10967,7 @@
       "backlog_months": 0.3,
       "backlog_weight": 0.1581,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -10984,7 +10982,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 4,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
     },
@@ -10998,7 +10996,7 @@
       "backlog_months": 1.5,
       "backlog_weight": 0.3536,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11013,7 +11011,7 @@
       "backlog_months": 0.7,
       "backlog_weight": 0.2415,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11028,7 +11026,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11043,7 +11041,7 @@
       "backlog_months": 0.3,
       "backlog_weight": 0.1581,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11058,7 +11056,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11073,7 +11071,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11088,7 +11086,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11103,7 +11101,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 3,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 3,
       "participant_id": "ANON-001"
     },
@@ -11117,7 +11115,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
@@ -11132,7 +11130,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11147,7 +11145,7 @@
       "backlog_months": 0.8,
       "backlog_weight": 0.2582,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11162,7 +11160,7 @@
       "backlog_months": 0.7,
       "backlog_weight": 0.2415,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11177,7 +11175,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11192,7 +11190,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
@@ -11207,7 +11205,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 4,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
@@ -11222,7 +11220,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 3,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 3,
       "participant_id": "ANON-001"
@@ -11237,7 +11235,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -11252,7 +11250,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11267,7 +11265,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -11282,7 +11280,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11297,7 +11295,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11312,7 +11310,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11327,7 +11325,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11342,7 +11340,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
@@ -11357,7 +11355,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -11372,7 +11370,7 @@
       "backlog_months": 4.0,
       "backlog_weight": 0.5774,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11399,7 +11397,7 @@
       "backlog_months": 0.75,
       "backlog_weight": 0.25,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11414,7 +11412,7 @@
       "backlog_months": 0.5,
       "backlog_weight": 0.2041,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11429,7 +11427,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
     },
@@ -11443,7 +11441,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11458,7 +11456,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11473,7 +11471,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11488,7 +11486,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 2,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 2,
       "participant_id": "ANON-001"
@@ -11503,7 +11501,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11518,7 +11516,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11533,7 +11531,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11548,7 +11546,7 @@
       "backlog_months": 12.0,
       "backlog_weight": 1.0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11563,7 +11561,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -11578,7 +11576,7 @@
       "backlog_months": 4.0,
       "backlog_weight": 0.5774,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11593,7 +11591,7 @@
       "backlog_months": 4.0,
       "backlog_weight": 0.5774,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11608,7 +11606,7 @@
       "backlog_months": 84.0,
       "backlog_weight": 2.6458,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11623,7 +11621,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11638,7 +11636,7 @@
       "backlog_months": 3.0,
       "backlog_weight": 0.5,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11653,7 +11651,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -11667,7 +11665,7 @@
       "backlog_months": 3.0,
       "backlog_weight": 0.5,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11682,7 +11680,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11697,7 +11695,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11712,7 +11710,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -11727,7 +11725,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
@@ -11742,7 +11740,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11757,7 +11755,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11772,7 +11770,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11787,7 +11785,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -11801,7 +11799,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11816,7 +11814,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11831,7 +11829,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11846,7 +11844,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11861,7 +11859,7 @@
       "backlog_months": 2.0,
       "backlog_weight": 0.4082,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11876,7 +11874,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11891,7 +11889,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -11906,7 +11904,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11921,7 +11919,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 4,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
@@ -11936,7 +11934,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -11951,7 +11949,7 @@
       "backlog_months": 5.4,
       "backlog_weight": 0.6708,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "participant_id": "ANON-001"
     },
@@ -11965,7 +11963,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -11979,7 +11977,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -12008,7 +12006,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -12023,7 +12021,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -12038,7 +12036,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -12053,7 +12051,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 4,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 4,
       "participant_id": "ANON-001"
@@ -12068,7 +12066,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -12083,7 +12081,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -12098,7 +12096,7 @@
       "backlog_months": 1.5,
       "backlog_weight": 0.3536,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 6,
       "participant_id": "ANON-001"
@@ -12113,7 +12111,7 @@
       "backlog_months": 1.5,
       "backlog_weight": 0.3536,
       "fwc": 8,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "bypass",
       "fwc_eom": 8,
       "participant_id": "ANON-001"
@@ -12128,7 +12126,7 @@
       "backlog_months": 1.0,
       "backlog_weight": 0.2887,
       "fwc": 7,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "augmentation",
       "fwc_eom": 7,
       "participant_id": "ANON-001"
@@ -12143,7 +12141,7 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 5,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "fwc_eom": 5,
       "participant_id": "ANON-001"
     },
@@ -12157,9 +12155,1524 @@
       "backlog_months": 0.0,
       "backlog_weight": 0,
       "fwc": 6,
-      "fwc_source": "eom-blind",
+      "fwc_source": "agent-blind",
       "subtype": "restoration",
       "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-08-31",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 59,
+      "gh_mins": 600,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-08-31",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 10,
+      "gh_mins": 180,
+      "backlog_months": 1.0,
+      "backlog_weight": 0.2887,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-08-31",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 84,
+      "gh_mins": 720,
+      "backlog_months": 1.0,
+      "backlog_weight": 0.2887,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-08-31",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 75,
+      "gh_mins": 1200,
+      "backlog_months": 1.0,
+      "backlog_weight": 0.2887,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-01",
+      "type": "speed",
+      "entry_class": "artifact",
+      "human_mins": 16,
+      "gh_mins": 150,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-01",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 15,
+      "gh_mins": 120,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-01",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 44,
+      "gh_mins": 1080,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-01",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 52,
+      "gh_mins": 1800,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-01",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 146,
+      "gh_mins": 1200,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 75,
+      "gh_mins": 960,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 29,
+      "gh_mins": 600,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "restoration",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 77,
+      "gh_mins": 1800,
+      "backlog_months": 3.0,
+      "backlog_weight": 0.5,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 47,
+      "gh_mins": 360,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 3,
+      "gh_mins": 25,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 3,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 15,
+      "gh_mins": 60,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 3,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 13,
+      "gh_mins": 20,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 3,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 77,
+      "gh_mins": 720,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 8,
+      "gh_mins": 10,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 3,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 6,
+      "gh_mins": 15,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 3,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 432,
+      "gh_mins": 2400,
+      "backlog_months": 3.0,
+      "backlog_weight": 0.5,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-02",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 140,
+      "gh_mins": 3600,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-03",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 74,
+      "gh_mins": 300,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-03",
+      "type": "unlock",
+      "entry_class": "artifact",
+      "human_mins": 34,
+      "gh_mins": 360,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 3,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-03",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 40,
+      "gh_mins": 600,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-03",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 86,
+      "gh_mins": 960,
+      "backlog_months": 1.0,
+      "backlog_weight": 0.2887,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 49,
+      "gh_mins": 420,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 159,
+      "gh_mins": 1800,
+      "backlog_months": 1.0,
+      "backlog_weight": 0.2887,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 212,
+      "gh_mins": 1440,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 79,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 88,
+      "gh_mins": 600,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 23,
+      "gh_mins": 180,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 523,
+      "gh_mins": 3600,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 87,
+      "gh_mins": 600,
+      "backlog_months": 0.5,
+      "backlog_weight": 0.2041,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 116,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-04",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 85,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 31,
+      "gh_mins": 600,
+      "backlog_months": 1.5,
+      "backlog_weight": 0.3536,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 9,
+      "gh_mins": 60,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 41,
+      "gh_mins": 480,
+      "backlog_months": 1.0,
+      "backlog_weight": 0.2887,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 47,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 265,
+      "gh_mins": 960,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 86,
+      "gh_mins": 1440,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 28,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 163,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 194,
+      "gh_mins": 1440,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 12,
+      "gh_mins": 120,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-05",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 52,
+      "gh_mins": 600,
+      "backlog_months": 5.0,
+      "backlog_weight": 0.6455,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-06",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 41,
+      "gh_mins": 480,
+      "backlog_months": 2.0,
+      "backlog_weight": 0.4082,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-06",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 32,
+      "gh_mins": 120,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-06",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 42,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-06",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 39,
+      "gh_mins": 720,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-06",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 9,
+      "gh_mins": 45,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 9,
+      "gh_mins": 60,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 27,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 41,
+      "gh_mins": 600,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 10,
+      "gh_mins": 180,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 202,
+      "gh_mins": 1440,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 428,
+      "gh_mins": 1440,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 72,
+      "gh_mins": 1080,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 61,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 102,
+      "gh_mins": 720,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-07",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 20,
+      "gh_mins": 300,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 80,
+      "gh_mins": 1800,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 33,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 30,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 8,
+      "gh_mins": 60,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 28,
+      "gh_mins": 540,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 85,
+      "gh_mins": 600,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 56,
+      "gh_mins": 1920,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 72,
+      "gh_mins": 360,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-08",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 22,
+      "gh_mins": 180,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-09",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 65,
+      "gh_mins": 1080,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-10",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 101,
+      "gh_mins": 2400,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-10",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 184,
+      "gh_mins": 3600,
+      "backlog_months": 78.0,
+      "backlog_weight": 2.5495,
+      "fwc": 9,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-10",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 53,
+      "gh_mins": 600,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-10",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 80,
+      "gh_mins": 2400,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-10",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 34,
+      "gh_mins": 480,
+      "backlog_months": 1.0,
+      "backlog_weight": 0.2887,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-10",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 53,
+      "gh_mins": 2400,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 23,
+      "gh_mins": 45,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 11,
+      "gh_mins": 90,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 34,
+      "gh_mins": 180,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 21,
+      "gh_mins": 60,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 27,
+      "gh_mins": 120,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 29,
+      "gh_mins": 90,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 42,
+      "gh_mins": 360,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-11",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 45,
+      "gh_mins": 300,
+      "backlog_months": 0.2,
+      "backlog_weight": 0.1291,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-12",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 15,
+      "gh_mins": 60,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-12",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 42,
+      "gh_mins": 720,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-12",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 63,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-14",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 77,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-14",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 125,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-15",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 58,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-15",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 110,
+      "gh_mins": 600,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-16",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 82,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-16",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 16,
+      "gh_mins": 160,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-17",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 46,
+      "gh_mins": 780,
+      "backlog_months": 4.0,
+      "backlog_weight": 0.5774,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-17",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 97,
+      "gh_mins": 1800,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-17",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 13,
+      "gh_mins": 240,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-17",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 29,
+      "gh_mins": 290,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 5,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-17",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 9,
+      "gh_mins": 75,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-18",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 52,
+      "gh_mins": 1200,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 8,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-18",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 77,
+      "gh_mins": 1800,
+      "backlog_months": 4.0,
+      "backlog_weight": 0.5774,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "bypass",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-18",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 41,
+      "gh_mins": 400,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 8,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-09-18",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 11,
+      "gh_mins": 90,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 4,
       "participant_id": "ANON-001"
     }
   ]
