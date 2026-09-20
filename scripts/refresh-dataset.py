@@ -25,7 +25,9 @@ REPO_ROOT = SCRIPT_DIR.parent
 README = REPO_ROOT / "README.md"
 DATASET_DIR = REPO_ROOT / "dataset"
 
-FORBIDDEN_FIELDS = {"desc", "note", "fwr_note", "project", "tags", "ts", "session_id"}
+# `condition` was a legacy derived tag export. Keep it forbidden so the
+# repository dataset cannot reintroduce a tag value if the share exporter changes.
+FORBIDDEN_FIELDS = {"desc", "note", "fwr_note", "project", "tags", "condition", "ts", "session_id"}
 
 # The shipped dataset uses a human-readable pseudonym, not the local random
 # participant UUID. The UUID stays on the machine; only the label ships.

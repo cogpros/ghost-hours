@@ -83,12 +83,6 @@ for e in sessions:
     if stripped.get("fwc_source") == "eom-blind":
         stripped["fwc_source"] = "agent-blind"
     stripped["participant_id"] = participant_id
-    # The condition: tag survives export as a bare `condition` field. It is a
-    # protocol slug (process-regime label per SPEC Condition Tagging), not free
-    # text, so it carries no re-identification surface. All other tags stay local.
-    cond = [t for t in e.get("tags", []) if t.startswith("condition:")]
-    if cond:
-        stripped["condition"] = cond[0].split(":", 1)[1]
     r = retro_by_session.get(e.get("session_id"))
     if r is not None:
         stripped["fwr"] = r["fwr"]
@@ -137,7 +131,7 @@ print("  gh_confidence, backlog_months, backlog_weight, fwc, fwc_source,")
 print("  fwc_eom (agent's blind estimate), fwr, fwr_source")
 print()
 print("Fields EXCLUDED: desc, note, fwr_note, project, tags, ts, session_id")
-print("  (exception: a condition: tag exports as a bare condition slug)")
+print("  (all tag values are excluded)")
 print()
 
 if auto_yes != "true":

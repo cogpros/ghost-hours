@@ -240,13 +240,13 @@ The de-identified export ships in this repo at [`dataset/ghost-hours-export-2026
 
 Fields included: `date`, `type`, `entry_class`, `subtype`, `human_mins`, `gh_mins`, `gh_confidence`, `backlog_months`, `backlog_weight`, `fwc`, `fwc_source`, `fwc_eom`, `fwr`, `fwr_source`.
 
-Fields excluded: descriptions, notes, projects, tags, timestamps, session_id. No free text, no dates finer than `date`, no IDs that link back to a session. One exception: a `condition:` tag (process-regime slug, see the SPEC's Condition Tagging section) exports as a `condition` field, because process experiments need that label in shared data. It is a protocol slug, never free text.
+Fields excluded: descriptions, notes, projects, all tag values, timestamps, session_id. No free text, no dates finer than `date`, no IDs that link back to a session. All tag values, including `condition:diagnosed-tbi`, are excluded from emitted export JSON.
 
 Apache-2.0, same as the rest of the repo.
 
 ## Sharing and Privacy
 
-`/ghost-hours share` exports your data for research. The export strips descriptions, notes, project names, tags, timestamps (date only retained), and session IDs. Retrospection scores are folded into their session rows at export time, so no session ID ever leaves your machine.
+`/ghost-hours share` exports your data for research. The export strips descriptions, notes, project names, all tag values, timestamps (date only retained), and session IDs. Retrospection scores are folded into their session rows at export time, so no session ID ever leaves your machine.
 
 What remains: date, type, subtype, entry class, minutes, confidence, backlog, FW-C, agent FW-C, FW-R. A random participant ID links your exports. You review the exact payload before anything leaves your machine.
 
@@ -254,7 +254,7 @@ What remains: date, type, subtype, entry class, minutes, confidence, backlog, FW
 - `~/.ghost-hours/`: `700` permissions, files `600`.
 - The `event_label` in config may contain health information. Disk encryption is your responsibility.
 - De-identification reduces but does not eliminate re-identification risk. Session frequency and type distributions are quasi-identifiers. Full anonymization is not claimed.
-- Optional tagging (via `--tags`) lets you mark entries for external programs such as tax-credit documentation or research studies; tags are always stripped from exports.
+- Optional tagging (via `--tags`) lets you mark entries for external programs such as tax-credit documentation or research studies; all tag values are always stripped from exports.
 
 ## Limitations
 
