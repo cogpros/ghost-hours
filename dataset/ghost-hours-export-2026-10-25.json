@@ -2,10 +2,10 @@
   "dataset": "The Ghost Hours Open Dataset 2026",
   "schema_version": "1.0",
   "participant_id": "ANON-001",
-  "export_date": "2026-10-24",
-  "session_count": 1019,
+  "export_date": "2026-10-25",
+  "session_count": 1021,
   "retrospection_count": 20,
-  "x_suppressed_tags": 739,
+  "x_suppressed_tags": 741,
   "x_suppressed_projects": 33,
   "entries": [
     {
@@ -13965,6 +13965,34 @@
       "fwc": 4,
       "fwc_source": "agent-blind",
       "fwc_eom": 4,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-10-24",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 62,
+      "gh_mins": 300,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-10-24",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 110,
+      "gh_mins": 360,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 4,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 5,
       "participant_id": "ANON-001"
     }
   ]
