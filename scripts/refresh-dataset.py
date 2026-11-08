@@ -81,53 +81,38 @@ def validate(export):
 def render_stats_block(export):
     entries = export["entries"]
     sessions = [e for e in entries if e.get("type") in ("speed", "unlock")]
-    speed = [e for e in sessions if e["type"] == "speed"]
-    unlock = [e for e in sessions if e["type"] == "unlock"]
+    humans = [e for e in sessions if e.get("entry_class") == "human"]
     dates = sorted(e["date"] for e in entries if e.get("date"))
     from datetime import date as ddate
     d0 = ddate.fromisoformat(dates[0])
     d1 = ddate.fromisoformat(dates[-1])
     days = (d1 - d0).days + 1
 
-    hh = sum(e.get("human_mins", 0) for e in sessions) / 60
-    gh = sum(e.get("gh_mins", 0) for e in sessions) / 60
-    cr = gh / hh if hh else 0
+    human_mins = sum(e.get("human_mins", 0) for e in humans)
+    gh_mins = sum(e.get("gh_mins", 0) for e in humans)
+    cr = gh_mins / human_mins if human_mins else 0
 
-    backlog = [e["backlog_months"] for e in sessions if e.get("backlog_months")]
-    fwc = [e["fwc"] for e in sessions if e.get("fwc")]
-    fwc_avg = sum(fwc) / len(fwc) if fwc else 0
-
-    interactive = sum(1 for e in sessions if e.get("entry_class") == "human")
+    interactive = len(humans)
     automated = len(sessions) - interactive
-
-    dist = {i: sum(1 for v in fwc if v == i) for i in range(1, 11)}
-    max_count = max(dist.values()) if fwc else 1
-    hist = "\n".join(
-        f"  {i:>2}:  {'#' * max(1, round(dist[i] / max_count * 10)) if dist[i] else ''}  ({dist[i]})"
-        for i in range(1, 11)
-    )
-
     pid = export["participant_id"]
-    return days, f"""```
-=== Participant: {pid} | {days} days ===
+    return days, f"""## Dataset snapshot
 
-Total sessions:        {len(sessions):,}
-  Speed:               {len(speed):,}
-  Unlock:              {len(unlock):,}
-Hugr Hours invested:   {hh:,.0f}h  ({hh/8:,.1f} work-days)
-Ghost Hours conjured:  {gh:,.0f}h ({gh/8:,.1f} work-days)
-Overall Conjure Rate:  {cr:.1f}x
+The shipped export covers **{days} calendar days**, from **{d0}** through
+**{d1}**, for participant **{pid}**. This is a date span, not a claim of
+daily use.
 
-Backlog cleared:       {sum(backlog)/12:,.1f} years (self-reported, {len(backlog)} sessions)
-Felt Weight avg:       {fwc_avg:.1f} / 10 ({len(fwc)} scored)
+| Measure | Shipped data |
+|---|---:|
+| Sessions | {len(sessions):,} |
+| Interactive human sessions | {interactive} |
+| Scheduled or machine-generated sessions | {automated} |
+| Estimated time without AI / recorded working time, interactive sessions only | {cr:.1f}x |
 
-FW-C Distribution:
-{hist}
-
-Sources: {interactive} interactive, {automated} scheduled/automated.
-```
-
-Real data. One person, using Ghost Hours daily for {days} days. No descriptions, no notes, no project names. Just the math and the felt weight."""
+The ratio (called **Conjure Rate** in the tool) divides the sum of `gh_mins` by
+the sum of `human_mins` for sessions with `entry_class: human`. Scheduled and
+machine-generated entries are excluded. It summarizes perceived effort, not
+measured productivity or verified time savings. Backlog durations are also
+estimates; adding them together does not establish elapsed time saved."""
 
 
 def render_dataset_line(export, filename):
