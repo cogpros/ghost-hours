@@ -1,7 +1,7 @@
 ---
 name: closing-time-buzz-facts
 description: >-
-  Use when the operator asks for closing time buzz, a Buzz fact sheet, or a
+  [nested copy, not a live skill] Use when the operator asks for closing time buzz, a Buzz fact sheet, or a
   Buzz-wide close. Read the community through a read-only Buzz CLI identity,
   capture the working-day evidence, appraise Ghost Hours, and save a local
   report and seal. For a terminal session alone use closing-time-cli-facts.
@@ -9,6 +9,8 @@ license: Apache-2.0
 metadata:
   version: "1.0.0"
 ---
+
+Nested copy, not a live skill; retired.
 
 # Closing Time Buzz Facts
 

@@ -1,7 +1,7 @@
 ---
 name: closing-time-cli-facts
 description: >-
-  Use when the operator delegates the whole CLI session close, including
+  [nested copy, not a live skill] Use when the operator delegates the whole CLI session close, including
   estimated appraisal and seal, in Claude Code, Codex, or Grok Build.
   Supports explicit session binding and honest agent attribution. Use
   closing-time for interactive appraisal.
@@ -9,6 +9,8 @@ license: Apache-2.0
 metadata:
   version: "1.0.0"
 ---
+
+Nested copy, not a live skill; duplicates the live `closing-time-cli-facts` skill.
 
 # Closing Time CLI Facts
 

@@ -1,6 +1,6 @@
 ---
 name: closing-time
-description: 'The operator-issued end-of-session protocol for a CLI session: mechanical fact-sheet pre-fill, background repo sweep, capture, clarify, assay, a type-aware Ghost Hours walkthrough, record, seal. Use when the operator asks to close out the session. The Ghost Hours measurement (../../SKILL.md) runs as the Phase 3 sub-step inside this skill. NOT FOR: mid-session checkpointing, mid-session re-orientation, pre-close audit only, one-off log entries (use the ghost-hours skill directly).'
+description: '[nested copy, not a live skill] The operator-issued end-of-session protocol for a CLI session: mechanical fact-sheet pre-fill, background repo sweep, capture, clarify, assay, a type-aware Ghost Hours walkthrough, record, seal. Use when the operator asks to close out the session. The Ghost Hours measurement (../../SKILL.md) runs as the Phase 3 sub-step inside this skill. NOT FOR: mid-session checkpointing, mid-session re-orientation, pre-close audit only, one-off log entries (use the ghost-hours skill directly).'
 user-invocable: true
 metadata:
   version: "2.0.0"
@@ -9,6 +9,8 @@ metadata:
 triggers:
   - "closing time"
 ---
+
+Nested copy, not a live skill; duplicates the live `closing-time-facts` skill.
 
 # Closing Time — Agent Instructions
 
