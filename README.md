@@ -1,6 +1,6 @@
 # Ghost Hours
 
-**v1.0.0** · Apache-2.0 · Pollock 2026, Raven Systems Inc.
+**v1.0.0** · Apache-2.0
 
 A local log of AI-assisted work: what you did, what you estimate it would have
 taken alone, and how much finishing it mattered to you.
@@ -264,7 +264,7 @@ Read these before using Ghost Hours data in research.
 
 **No peer review.** The taxonomy is a proposed classification, not an established standard. External validation is welcomed.
 
-**n=1.** The snapshot above covers one operator over 262 calendar days. Patterns may not generalize. More participants and external validation are needed before making broader claims.
+**n=1.** The snapshot above covers one operator over the date span shown there. Patterns may not generalize. More participants and external validation are needed before making broader claims.
 
 **Backlog months are self-reported.** Perceived delay, not measured duration. The Backlog Weight function dampens outliers.
 
