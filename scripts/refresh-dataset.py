@@ -11,7 +11,7 @@ Usage:
   refresh-dataset.py            # refresh dataset/ + README in the repo root
   refresh-dataset.py --dry-run  # validate and print, write nothing
 
-Copyright 2026 Raven Systems Inc. Licensed under Apache 2.0.
+Copyright 2026 Dustin Pollock. Licensed under Apache 2.0.
 """
 
 import json

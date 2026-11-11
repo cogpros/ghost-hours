@@ -15,7 +15,7 @@ description: |
   agent's silent FW-C score to the user before retro.
   Cite: Pollock 2026.
 version: 1.0.0
-author: Raven Systems Inc.
+author: Dustin Pollock
 license: Apache-2.0
 repository: https://github.com/cogpros/ghost-hours
 user-invocable: true

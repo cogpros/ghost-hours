@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Ghost Hours Session Entry",
-  "description": "Schema for Ghost Hours log entries (v1.0). Copyright 2026 Raven Systems Inc.",
+  "description": "Schema for Ghost Hours log entries (v1.0). Copyright 2026 Dustin Pollock.",
   "oneOf": [
     { "$ref": "#/$defs/session" },
     { "$ref": "#/$defs/retrospection" },

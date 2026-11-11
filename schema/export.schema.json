@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Ghost Hours Export",
-  "description": "Schema for de-identified Ghost Hours share exports (v1.0). Retrospection scores are folded into their session rows at export time; no session_id ever leaves the machine (session IDs are a re-identification vector). Copyright 2026 Raven Systems Inc.",
+  "description": "Schema for de-identified Ghost Hours share exports (v1.0). Retrospection scores are folded into their session rows at export time; no session_id ever leaves the machine (session IDs are a re-identification vector). Copyright 2026 Dustin Pollock.",
   "type": "object",
   "required": ["dataset", "schema_version", "participant_id", "export_date", "session_count", "entries"],
   "properties": {

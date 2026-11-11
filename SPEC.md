@@ -1,7 +1,7 @@
 # Ghost Hours -- Open Source Skill Specification
 
 **Version:** 1.0.0
-**Author:** D. Pollock, Raven Systems Inc.
+**Author:** Dustin Pollock
 **Date:** 2026-07-01
 **Status:** Stable. Schema 1.0; migration contract honored from here forward.
 
@@ -29,10 +29,10 @@ The taxonomy is the contribution. The tool is the delivery mechanism.
 
 **Name:** Ghost Hours
 **Tagline:** Measure what AI actually does for you.
-**Publisher:** Raven Systems Inc.
-**License:** Apache 2.0 with Raven Systems Inc. copyright
+**Publisher:** Dustin Pollock
+**License:** Apache 2.0 with copyright held by Dustin Pollock
 **Repository:** `cogpros/ghost-hours` (GitHub)
-**Citation:** Pollock, D. (2026). The Ghost Hours Framework: A Mathematical Model for Measuring AI-Assisted Human Output and the Experience of Capability Expansion. Raven Systems Inc.
+**Citation:** Pollock, D. (2026). The Ghost Hours Framework: A Mathematical Model for Measuring AI-Assisted Human Output and the Experience of Capability Expansion. Dustin Pollock.
 
 ---
 
@@ -424,7 +424,7 @@ ghost-hours/
   SKILL.md              # Skill definition (the agent reads this)
   README.md             # For humans. Teaches the taxonomy. Explains the research.
   SPEC.md               # This document.
-  LICENSE               # Apache 2.0, Raven Systems Inc.
+  LICENSE               # Apache 2.0, Dustin Pollock
   scripts/
     ghost_hours_writer.py # Core write engine (JSON construction, locking, validation)
     log-ghost-hours.sh  # CLI logging wrapper
@@ -446,7 +446,7 @@ ghost-hours/
 name: ghost-hours
 description: Measure what AI actually does for you. Productivity and capability tracking built as a research framework.
 version: 1.0.0
-author: Raven Systems Inc.
+author: Dustin Pollock
 commands:
   - log
   - report
@@ -487,7 +487,7 @@ run the guided flow correctly.]
 - [ ] JSON-safe construction (Python json module, never string concatenation)
 - [ ] JSON Schema for session and export formats
 - [ ] Schema version 0.9 (signals schema may change before 1.0)
-- [ ] Apache 2.0 license with Raven Systems Inc. copyright
+- [ ] Apache 2.0 license with copyright held by Dustin Pollock
 - [ ] config.json with participant ID, sessions counter, event_label_asked flag
 - [ ] GH estimation calibration prompts (first 5 sessions, range format)
 - [ ] Tag sanitization (lowercase, hyphens, strip non-alphanumeric, append -recovery, max 50 chars, Python)
@@ -532,7 +532,7 @@ Grep-friendly. Human-readable. One file to back up. No dependencies. Research te
 Minimal dependencies: bash and Python 3. No pip install. No virtual environment. The skill tells the agent what to run. The scripts do the work. Python handles all JSON construction (never string concatenation). If someone wants to build a wrapper in another language, the JSONL format is the API.
 
 ### Why Apache 2.0?
-Permissive enough that anyone can use it. Attribution required (Raven Systems Inc.). Patent grant included. Compatible with academic and commercial use. AGPL would block adoption in corporate research settings.
+Permissive enough that anyone can use it. Attribution required (Dustin Pollock). Patent grant included. Compatible with academic and commercial use. AGPL would block adoption in corporate research settings.
 
 ### Why not just a CLI tool?
 The guided flow is the product. The decision tree, the pacing (one question at a time), the agent providing the GH estimate -- these require a conversational interface. A CLI tool logs data. A skill runs a protocol.
@@ -562,7 +562,7 @@ Felt Weight of Completion is a self-report scale with anchor points derived from
 
 ### No peer review
 
-The Ghost Hours Framework paper (Pollock 2026) is self-published by Raven Systems Inc. It has not been peer-reviewed. The taxonomy (speed/unlock, restoration/bypass/augmentation) is a proposed classification, not an established standard. External validation is welcomed and needed.
+Dustin Pollock self-published the Ghost Hours Framework paper in 2026. It has not been peer-reviewed. The taxonomy (speed/unlock, restoration/bypass/augmentation) is a proposed classification, not an established standard. External validation is welcomed and needed.
 
 ### n=1
 
@@ -598,12 +598,12 @@ The dataset grows through utility, not recruitment. People use the tool because 
 
 **Citation line in README and SKILL.md:**
 
-> Ghost Hours is a measurement framework developed by Raven Systems Inc.
+> Ghost Hours is a measurement framework developed by Dustin Pollock.
 > If you use Ghost Hours data in published work, please cite:
 >
 > Pollock, D. (2026). The Ghost Hours Framework: A Mathematical Model
 > for Measuring AI-Assisted Human Output and the Experience of
-> Capability Expansion. Raven Systems Inc.
+> Capability Expansion. Dustin Pollock.
 
 ---
 
@@ -716,4 +716,4 @@ This is what the README shows. Not what Ghost Hours could do. What it did.
 
 ---
 
-*Raven Systems Inc. -- Measure what changes.*
+*Measure what changes.*

@@ -10,7 +10,7 @@
 #   ghost-hours-share.sh           # interactive
 #   ghost-hours-share.sh --yes     # skip confirmation
 #
-# Copyright 2026 Raven Systems Inc. Licensed under Apache 2.0.
+# Copyright 2026 Dustin Pollock. Licensed under Apache 2.0.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 WRITER="$SCRIPT_DIR/ghost_hours_writer.py"

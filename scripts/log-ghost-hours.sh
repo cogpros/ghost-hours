@@ -8,7 +8,7 @@
 # All JSON construction and file locking is handled by Python.
 # This script is a thin CLI wrapper for ghost_hours_writer.py.
 #
-# Copyright 2026 Raven Systems Inc. Licensed under Apache 2.0.
+# Copyright 2026 Dustin Pollock. Licensed under Apache 2.0.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 WRITER="$SCRIPT_DIR/ghost_hours_writer.py"

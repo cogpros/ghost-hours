@@ -8,7 +8,7 @@ and atomic append. All write operations go through this module.
 Platform support: macOS, Linux, Windows.
 Dependencies: Python 3.6+ (stdlib only).
 
-Copyright 2026 Raven Systems Inc. Licensed under Apache 2.0.
+Copyright 2026 Dustin Pollock. Licensed under Apache 2.0.
 """
 
 import json

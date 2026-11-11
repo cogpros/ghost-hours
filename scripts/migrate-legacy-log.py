@@ -11,7 +11,7 @@ Usage:
 Default input: the active log (GHOST_HOURS_LOG env var, config log_path, or ~/.ghost-hours/log.jsonl)
 Output: same file (in-place with backup)
 
-Copyright 2026 Raven Systems Inc. Licensed under Apache 2.0.
+Copyright 2026 Dustin Pollock. Licensed under Apache 2.0.
 """
 
 import json
