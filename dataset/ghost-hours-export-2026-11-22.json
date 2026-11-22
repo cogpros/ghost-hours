@@ -2,10 +2,10 @@
   "dataset": "The Ghost Hours Open Dataset 2026",
   "schema_version": "1.0",
   "participant_id": "ANON-001",
-  "export_date": "2026-11-15",
-  "session_count": 1071,
+  "export_date": "2026-11-22",
+  "session_count": 1075,
   "retrospection_count": 20,
-  "x_suppressed_tags": 791,
+  "x_suppressed_tags": 795,
   "x_suppressed_projects": 34,
   "entries": [
     {
@@ -14713,6 +14713,64 @@
       "fwc": 4,
       "fwc_source": "agent-blind",
       "fwc_eom": 5,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-11-17",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 427,
+      "gh_mins": 1800,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-11-17",
+      "type": "unlock",
+      "entry_class": "human",
+      "human_mins": 105,
+      "gh_mins": 1200,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 7,
+      "fwc_source": "agent-blind",
+      "subtype": "augmentation",
+      "fwc_eom": 7,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-11-18",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 69,
+      "gh_mins": 480,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 6,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 6,
+      "participant_id": "ANON-001"
+    },
+    {
+      "schema_version": "1.0",
+      "date": "2026-11-19",
+      "type": "speed",
+      "entry_class": "human",
+      "human_mins": 5,
+      "gh_mins": 40,
+      "backlog_months": 0.0,
+      "backlog_weight": 0,
+      "fwc": 3,
+      "fwc_source": "agent-blind",
+      "fwc_eom": 3,
       "participant_id": "ANON-001"
     }
   ]
